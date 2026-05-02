@@ -1,4 +1,4 @@
-from .pipeline import process
+from app.ai.pipeline import process
 
 print("Running AI pipeline test...")
 products = [
@@ -33,9 +33,25 @@ products = [
         "currency": "USD",
         "region": "global",
         "source": "Digikey"
+    },
+    {
+        "title": "ATMEGA328 DIP28 AVR",
+        "brand": "Microchip",
+        "price": 95,
+        "currency": "TRY",
+        "region": "TR",
+        "source": "Trendyol"
+    },
+    {
+        "title": "ATMEGA328 DIP28 AVR",
+        "brand": "Microchip",
+        "price": 195,
+        "currency": "TRY",
+        "region": "TR",
+        "source": "Hepsiburada"
     }
 ]
 
-results = process(products)
+results = process(products, market_region="TR")
 
 print(results)
