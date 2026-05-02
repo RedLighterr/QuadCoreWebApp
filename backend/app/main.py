@@ -3,7 +3,7 @@ from fastapi import FastAPI
 from fastapi.middleware.cors import CORSMiddleware
 from .db.session import engine
 from .db import models
-from .api import products, admin
+from .api import products, admin, admin_data
 
 # Logging yapılandırması
 logging.basicConfig(
@@ -34,6 +34,7 @@ app.add_middleware(
 # Routerları ekle
 app.include_router(products.router)
 app.include_router(admin.router)
+app.include_router(admin_data.router)
 
 @app.get("/")
 async def root():

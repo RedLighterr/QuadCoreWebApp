@@ -1,0 +1,9 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(python -c \"from app.api import admin_data; print\\('OK', [r.path for r in admin_data.router.routes]\\)\")",
+      "Bash(python -c \"from app.main import app; print\\('routes:', sorted\\({r.path for r in app.routes}\\)\\)\")",
+      "Bash(python -c ' *)"
+    ]
+  }
+}

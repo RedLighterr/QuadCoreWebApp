@@ -11,7 +11,7 @@ import axios from 'axios';
 
 // ─── Ayarlar ────────────────────────────────────────────────────────────────
 const API_BASE_URL = import.meta.env.VITE_API_URL || 'http://localhost:8000';
-const USE_MOCK     = import.meta.env.VITE_USE_MOCK !== 'false'; // varsayılan: true
+const USE_MOCK     = import.meta.env.VITE_USE_MOCK === 'true'; // varsayılan: false (canlı API)
 
 // ─── Axios İstemcisi ────────────────────────────────────────────────────────
 const apiClient = axios.create({
@@ -116,7 +116,12 @@ export const searchComponents = async (query) => {
 
   try {
     const response = await apiClient.get('/products/search', {
-      params: { q: query }
+      params: {
+        q: query,
+        _t: Date.now() // Cache buster
+      },
+      // Backend scraping + AI pipeline yavaş olabilir (HF model + Gemini çağrıları)
+      timeout: 120000,
     });
     return transformToCards(response.data);
   } catch (error) {

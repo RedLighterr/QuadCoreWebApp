@@ -99,7 +99,7 @@ def process(products, usd_try=1.0):
             "ref_suggestion": ref_suggestion,
             "top3": [clean_product(x) for x in sorted(analysis_products, key=lambda x: x["price"])[:6]],
             "market_refs": [clean_product(x) for x in tr_products],
-            "description": f"{generate_description(cluster[0])}",
+            "description": f"{generate_description_cached(cluster[0])}",
         })
 
     return results
