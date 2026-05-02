@@ -1,9 +1,15 @@
 from fastapi import FastAPI
 from fastapi.middleware.cors import CORSMiddleware
+from .db.session import engine
+from .db import models
+from .api import products
+
+# Veritabanı tablolarını oluştur (SQLite için başlangıçta kolaylık sağlar)
+models.Base.metadata.create_all(bind=engine)
 
 app = FastAPI(title="QuadCore API", version="1.0.0")
 
-# CORS ayarları (Frontend ile konuşabilmek için)
+# CORS ayarları
 app.add_middleware(
     CORSMiddleware,
     allow_origins=["*"],
@@ -12,10 +18,13 @@ app.add_middleware(
     allow_headers=["*"],
 )
 
+# Routerları ekle
+app.include_router(products.router)
+
 @app.get("/")
 async def root():
-    return {"message": "QuadCore Backend is running!"}
-
-@app.get("/health")
-async def health_check():
-    return {"status": "healthy"}
+    return {
+        "project": "QuadCore",
+        "status": "online",
+        "docs": "/docs"
+    }

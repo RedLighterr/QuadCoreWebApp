@@ -1,30 +1,11 @@
 import React, { useState, useEffect } from 'react';
-import { Search, MoreHorizontal, ChevronRight, TrendingUp, TrendingDown, Package, Truck, AlertTriangle, PlayCircle, HelpCircle, ArrowRight } from 'lucide-react';
+import { Search, MoreHorizontal, ChevronRight, TrendingUp, TrendingDown, Package, Truck, AlertTriangle, PlayCircle, HelpCircle, ArrowRight, MessageSquare } from 'lucide-react';
 import { AreaChart, Area, XAxis, YAxis, Tooltip, ResponsiveContainer, CartesianGrid } from 'recharts';
 import { motion, AnimatePresence } from 'framer-motion';
 import { searchComponents, analyzeComponent } from '../services/api';
-import { useLocation, useNavigate } from 'react-router-dom';
+import { useLocation, useNavigate, Link } from 'react-router-dom';
 
-const mockComponents = [
-  { id: 1, name: 'ESP32-WROOM-32D', supplier: 'Digi-Key', supplierColor: '#e53935', price: 3.85, stock: 38, status: 'Stok', ai: 'Mouser ($1.75, Stok Teslim)', category: 'WiFi+BT MCU' },
-  { id: 2, name: 'ESP32-WROOM-32U', supplier: 'AliExpress', supplierColor: '#ff6d00', price: 4.15, stock: '8Bin+', status: 'Özellikler', ai: 'AliExpress ($1.40, 15Bin+ Stok)', category: 'WiFi+BT MCU' },
-  { id: 3, name: 'ESP32-WROOM-32', supplier: 'Digi-Key', supplierColor: '#e53935', price: 3.85, stock: 28, status: 'Özellikler', ai: 'Mouser ($1.75, Stok Teslim)', category: 'WiFi+BT MCU' },
-  { id: 4, name: 'ESP-WROOM-02', supplier: 'AliExpress', supplierColor: '#ff6d00', price: 2.15, stock: '8Bin+', status: 'Özellikler', ai: 'AliExpress ($1.50, Stock Shipping)', category: 'WiFi MCU' },
-  { id: 5, name: 'ESP32-S3-WROOM-1', supplier: 'Digi-Key', supplierColor: '#e53935', price: 4.25, stock: '2K', status: 'Özellikler', ai: 'LCSC ($1.90, Stock Shipping)', category: 'WiFi+BT MCU' },
-  { id: 6, name: 'ESP32-C3-WROOM-02', supplier: 'Mouser', supplierColor: '#1e88e5', price: 1.75, stock: 24, status: 'Özellikler', ai: 'LCSC ($1.20, Stock Shipping)', category: 'RISC-V MCU' },
-];
-
-const trendData = [
-  { month: 'Oca', fiyat: 4.2 }, { month: 'Şub', fiyat: 4.5 }, { month: 'Mar', fiyat: 3.9 },
-  { month: 'Nis', fiyat: 3.8 }, { month: 'May', fiyat: 4.1 }, { month: 'Haz', fiyat: 3.85 },
-];
-
-const priceComparison = [
-  { supplier: 'AliExpress', price: '$3.85', bold: true },
-  { supplier: 'Digi-Key', price: '$4.20' },
-  { supplier: 'Mouser', price: '$4.15' },
-  { supplier: 'LCSC', price: '$3.95' },
-];
+// Veriler backend API'den gelecek — placeholder veri yok
 
 const SupplierBadge = ({ name, color }) => (
   <div style={{ display: 'flex', alignItems: 'center', gap: '5px' }}>
@@ -96,20 +77,14 @@ const ComponentCard = ({ comp, index, isSelected, onClick }) => (
 );
 
 const DetailPanel = ({ comp }) => (
-  <div style={{
-    width: '300px',
-    minWidth: '300px',
+  <div className="dashboard-detail" style={{
+    width: '380px',
     background: 'var(--bg-sidebar)',
     borderLeft: '1px solid var(--border)',
-    height: 'calc(100vh - 52px)',
-    overflowY: 'auto',
-    padding: '20px',
-    display: 'flex',
-    flexDirection: 'column',
-    gap: '20px',
-    boxShadow: '-4px 0 15px rgba(0,0,0,0.02)'
+    padding: '24px',
+    overflowY: 'auto'
   }}>
-    <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
+    <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: '20px' }}>
       <h3 style={{ fontSize: '1rem', fontWeight: '600', color: 'var(--text-main)' }}>Bileşen Detayı</h3>
       <button style={{ background: 'none', border: 'none', color: 'var(--text-muted)', cursor: 'pointer' }}>
         <MoreHorizontal size={18} />
@@ -181,6 +156,43 @@ const DetailPanel = ({ comp }) => (
   </div>
 );
 
+const FAQItem = ({ question, answer }) => {
+  const [isOpen, setIsOpen] = useState(false);
+  return (
+    <div 
+      className="glass-card" 
+      onClick={() => setIsOpen(!isOpen)}
+      style={{ 
+        padding: '16px 20px', 
+        cursor: 'pointer', 
+        borderLeft: isOpen ? '4px solid var(--accent)' : '1px solid var(--border)',
+        background: isOpen ? 'rgba(2, 132, 199, 0.02)' : 'var(--bg-card)',
+        transition: 'all 0.2s ease'
+      }}
+    >
+      <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
+        <h4 style={{ fontSize: '1rem', fontWeight: '600', color: 'var(--text-main)' }}>{question}</h4>
+        <motion.div animate={{ rotate: isOpen ? 180 : 0 }}>
+          <MoreHorizontal size={18} color="var(--text-dim)" />
+        </motion.div>
+      </div>
+      <AnimatePresence>
+        {isOpen && (
+          <motion.div
+            initial={{ height: 0, opacity: 0, marginTop: 0 }}
+            animate={{ height: 'auto', opacity: 1, marginTop: 12 }}
+            exit={{ height: 0, opacity: 0, marginTop: 0 }}
+            transition={{ duration: 0.3, ease: 'easeInOut' }}
+            style={{ overflow: 'hidden' }}
+          >
+            <p style={{ color: 'var(--text-muted)', fontSize: '0.9rem', lineHeight: '1.6' }}>{answer}</p>
+          </motion.div>
+        )}
+      </AnimatePresence>
+    </div>
+  );
+};
+
 const LandingView = ({ onSearch }) => {
   const [query, setQuery] = useState('');
 
@@ -222,26 +234,18 @@ const LandingView = ({ onSearch }) => {
             Ara <ArrowRight size={18} />
           </button>
         </div>
-        <div style={{ marginTop: '20px', display: 'flex', justifyContent: 'center', gap: '10px', flexWrap: 'wrap' }}>
-          <span style={{ color: 'var(--text-muted)', fontSize: '0.9rem', marginRight: '5px' }}>Önerilenler:</span>
-          {['STM32F103', 'ESP32', 'LM317', 'ATMEGA328P'].map(tag => (
-            <span key={tag} onClick={() => onSearch(tag)} style={{ fontSize: '0.85rem', color: 'var(--accent)', cursor: 'pointer', background: 'rgba(2, 132, 199, 0.08)', padding: '2px 10px', borderRadius: '12px' }}>
-              {tag}
-            </span>
-          ))}
-        </div>
+        {/* Öneri etiketleri backend entegrasyonundan sonra dinamik olarak gelecek */}
       </motion.div>
 
       {/* Info Sections */}
-      <motion.div initial={{ opacity: 0 }} animate={{ opacity: 1 }} transition={{ delay: 0.3 }} style={{ width: '100%', display: 'flex', flexDirection: 'column', gap: '60px' }}>
+      <motion.div initial={{ opacity: 0 }} animate={{ opacity: 1 }} transition={{ delay: 0.3 }} style={{ maxWidth: '900px', margin: '100px auto 40px auto', display: 'flex', flexDirection: 'column', gap: '30px' }}>
         
         {/* Nasıl Çalışır? */}
-        <section>
-          <div style={{ display: 'flex', alignItems: 'center', gap: '10px', marginBottom: '25px', justifyContent: 'center' }}>
-            <PlayCircle size={24} color="var(--accent)" />
-            <h2 style={{ fontSize: '1.8rem', color: 'var(--text-main)', fontWeight: '700' }}>Sistem Nasıl Çalışır?</h2>
-          </div>
-          <div style={{ display: 'grid', gridTemplateColumns: 'repeat(3, 1fr)', gap: '20px' }}>
+        <section className="glass-card" style={{ padding: '30px', background: 'var(--bg-card)' }}>
+          <h3 style={{ fontSize: '1.2rem', marginBottom: '20px', display: 'flex', alignItems: 'center', gap: '8px', color: 'var(--text-main)' }}>
+            <HelpCircle size={20} color="var(--accent)" /> Nasıl Çalışır?
+          </h3>
+          <div className="grid-cols-3" style={{ display: 'grid', gap: '20px' }}>
             {[
               { title: '1. Tarama', desc: 'Mouser, DigiKey, LCSC gibi 50+ küresel distribütör eş zamanlı olarak taranır.' },
               { title: '2. Yapay Zeka Analizi', desc: 'Gümrük, kargo süreleri ve fiyat avantajları yapay zeka tarafından hesaplanır.' },
@@ -256,23 +260,50 @@ const LandingView = ({ onSearch }) => {
           </div>
         </section>
 
-        {/* Sıkça Sorulan Sorular */}
-        <section>
-          <div style={{ display: 'flex', alignItems: 'center', gap: '10px', marginBottom: '25px', justifyContent: 'center' }}>
-            <HelpCircle size={24} color="var(--accent)" />
-            <h2 style={{ fontSize: '1.8rem', color: 'var(--text-main)', fontWeight: '700' }}>Sıkça Sorulan Sorular</h2>
+        {/* Müşterilerimiz Ne Diyor? */}
+        <section className="glass-card" style={{ padding: '30px', background: 'var(--bg-card)' }}>
+          <h3 style={{ fontSize: '1.2rem', marginBottom: '20px', display: 'flex', alignItems: 'center', gap: '8px', color: 'var(--text-main)' }}>
+            <MessageSquare size={20} color="var(--accent)" /> Müşterilerimiz Ne Diyor?
+          </h3>
+          <div className="grid-cols-3" style={{ display: 'grid', gap: '20px' }}>
+            {[
+              { name: 'Ayşe Y.', role: 'Satın Alma Müdürü', text: 'Tedarik zinciri yönetimimizde SourceFlow sayesinde %30 maliyet tasarrufu sağladık. Yapay zeka analizi inanılmaz.' },
+              { name: 'Mehmet B.', role: 'Elektronik Mühendisi', text: 'Prototip aşamasında parça bulmak tam bir kabustu. Şimdi saniyeler içinde en uygun stoklu parçayı bulabiliyorum.' },
+              { name: 'Caner T.', role: 'Donanım Tasarımcısı', text: 'Cross-reference özelliği sayesinde stokta olmayan kritik parçaların alternatiflerini anında bulup tasarıma devam edebiliyorum.' }
+            ].map((t, i) => (
+              <div key={i} className="glass-card" style={{ padding: '20px', background: 'var(--bg)', border: '1px solid var(--border)', borderRadius: '12px' }}>
+                <p style={{ fontStyle: 'italic', color: 'var(--text-muted)', fontSize: '0.85rem', marginBottom: '15px', lineHeight: '1.6' }}>"{t.text}"</p>
+                <div style={{ display: 'flex', alignItems: 'center', gap: '10px' }}>
+                  <div style={{ width: 32, height: 32, borderRadius: '50%', background: 'var(--accent)', color: '#fff', display: 'flex', alignItems: 'center', justifyContent: 'center', fontWeight: 'bold', fontSize: '0.8rem' }}>{t.name[0]}</div>
+                  <div>
+                    <div style={{ fontSize: '0.85rem', fontWeight: '700', color: 'var(--text-main)' }}>{t.name}</div>
+                    <div style={{ fontSize: '0.7rem', color: 'var(--text-dim)' }}>{t.role}</div>
+                  </div>
+                </div>
+              </div>
+            ))}
           </div>
-          <div style={{ display: 'flex', flexDirection: 'column', gap: '15px' }}>
+        </section>
+
+        {/* Sıkça Sorulan Sorular (Accordion) */}
+        <section className="glass-card" style={{ padding: '30px', background: 'var(--bg-card)' }}>
+          <h3 style={{ fontSize: '1.2rem', marginBottom: '20px', display: 'flex', alignItems: 'center', gap: '8px', color: 'var(--text-main)' }}>
+            <HelpCircle size={20} color="var(--accent)" /> Sıkça Sorulan Sorular
+          </h3>
+          <div style={{ display: 'flex', flexDirection: 'column', gap: '12px' }}>
             {[
               { q: 'Hangi tedarikçileri destekliyorsunuz?', a: 'Mouser, DigiKey, Farnell, Arrow, AliExpress ve LCSC dahil olmak üzere 50\'den fazla global distribütörü canlı destekliyoruz.' },
               { q: 'Fiyatlara gümrük vergileri dahil mi?', a: 'Yapay zeka analiz raporlarında, ülkenize özgü tahmini gümrük vergileri ve kargo masrafları hesaplamalara dahil edilmektedir.' },
-              { q: 'Veriler ne sıklıkla güncelleniyor?', a: 'Tüm stok ve fiyat verileri anlık olarak API üzerinden çekilir, önbellek süresi maksimum 5 dakikadır.' }
+              { q: 'Veriler ne sıklıkla güncelleniyor?', a: 'Tüm stok ve fiyat verileri anlık olarak API üzerinden çekilir, önbellek süresi maksimum 5 dakikadır.' },
+              { q: 'Kendi şirket verilerimi ekleyebilir miyim?', a: 'Premium sürümde, kendi tedarikçilerinizi, API anahtarlarınızı ve şirket içi stok durumunuzu sisteme entegre edebilirsiniz.' }
             ].map((faq, i) => (
-              <div key={i} className="glass-card" style={{ padding: '20px 24px', display: 'flex', flexDirection: 'column', gap: '8px' }}>
-                <h4 style={{ fontSize: '1.05rem', color: 'var(--text-main)', fontWeight: '600' }}>{faq.q}</h4>
-                <p style={{ color: 'var(--text-muted)', fontSize: '0.95rem', lineHeight: '1.5' }}>{faq.a}</p>
-              </div>
+              <FAQItem key={i} question={faq.q} answer={faq.a} />
             ))}
+          </div>
+          <div style={{ textAlign: 'center', marginTop: '30px' }}>
+            <Link to="/sss" className="premium-button" style={{ display: 'inline-block', textDecoration: 'none', padding: '10px 24px' }}>
+              Daha Fazla Soru Gör
+            </Link>
           </div>
         </section>
 
@@ -283,12 +314,37 @@ const LandingView = ({ onSearch }) => {
 
 const Dashboard = () => {
   const [searchQuery, setSearchQuery] = useState('');
-  const [selectedComp, setSelectedComp] = useState(mockComponents[0]);
-  const [results, setResults] = useState(mockComponents);
+  const [selectedComp, setSelectedComp] = useState(null);
+  const [results, setResults] = useState([]);
   const [loading, setLoading] = useState(false);
   const [hasSearched, setHasSearched] = useState(false);
+  const [filterCategory, setFilterCategory] = useState('Hepsi');
+  const [sortBy, setSortBy] = useState('price-low');
   const location = useLocation();
   const navigate = useNavigate();
+
+  const filteredAndSortedResults = results
+    .filter(c => filterCategory === 'Hepsi' || c.category === filterCategory)
+    .sort((a, b) => {
+      if (sortBy === 'price-low') return a.price - b.price;
+      if (sortBy === 'price-high') return b.price - a.price;
+      if (sortBy === 'stock-high') {
+        const parseStock = (val) => {
+          if (typeof val === 'number') return val;
+          if (typeof val !== 'string') return 0;
+          let num = parseFloat(val.replace(/,/g, '').replace(/[^\d.-]/g, ''));
+          if (val.toLowerCase().includes('k') || val.toLowerCase().includes('bin')) num *= 1000;
+          if (val.toLowerCase().includes('m')) num *= 1000000;
+          return isNaN(num) ? 0 : num;
+        };
+        const stockA = parseStock(a.stock);
+        const stockB = parseStock(b.stock);
+        return stockB - stockA;
+      }
+      return 0;
+    });
+
+  const categories = ['Hepsi', ...new Set(results.map(c => c.category).filter(Boolean))];
 
   useEffect(() => {
     // Check if there is a search query in the URL params
@@ -300,6 +356,7 @@ const Dashboard = () => {
       // Ana Sayfa linkine tıklandığında (veya URL'de q parametresi yoksa) aramayı sıfırla
       setHasSearched(false);
       setSearchQuery('');
+      window.scrollTo({ top: 0, behavior: 'smooth' });
     }
   }, [location.search]);
 
@@ -318,62 +375,131 @@ const Dashboard = () => {
     
     try {
       const data = await searchComponents(q);
-      const newResults = data.length > 0 ? data : mockComponents;
-      setResults(newResults);
-      setSelectedComp(newResults[0]);
+      setResults(data || []);
+      setSelectedComp(data && data.length > 0 ? data[0] : null);
     } catch {
-      setResults(mockComponents);
-      setSelectedComp(mockComponents[0]);
+      setResults([]);
+      setSelectedComp(null);
     } finally {
       setLoading(false);
     }
   };
 
   if (!hasSearched) {
-    return <LandingView onSearch={handleSearch} />;
+    return (
+      <motion.div
+        initial={{ opacity: 0, y: 16 }}
+        animate={{ opacity: 1, y: 0 }}
+        exit={{ opacity: 0, y: -16 }}
+        transition={{ duration: 0.35, ease: 'easeOut' }}
+      >
+        <LandingView onSearch={handleSearch} />
+      </motion.div>
+    );
   }
 
   return (
-    <div style={{ display: 'flex', height: 'calc(100vh - 52px)', overflow: 'hidden' }}>
+    <motion.div
+      initial={{ opacity: 0, y: 16 }}
+      animate={{ opacity: 1, y: 0 }}
+      exit={{ opacity: 0, y: -16 }}
+      transition={{ duration: 0.35, ease: 'easeOut' }}
+      className="dashboard-layout"
+      style={{ display: 'flex', height: 'calc(100vh - 52px)', overflow: 'hidden' }}
+    >
       {/* Center Content */}
-      <div style={{ flex: 1, overflowY: 'auto', padding: '24px 30px', background: 'var(--bg)' }}>
+      <div className="dashboard-results" style={{ flex: 1, overflowY: 'auto', padding: '24px 30px', background: 'var(--bg)' }}>
         
         {/* Search Bar (Top) */}
-        <div style={{ marginBottom: '24px', display: 'flex', alignItems: 'center', justifyContent: 'space-between' }}>
+        <div style={{ marginBottom: '24px', display: 'flex', alignItems: 'center', justifyContent: 'space-between', gap: '20px', flexWrap: 'wrap' }}>
           <h2 style={{ fontSize: '1.4rem', fontWeight: '700', color: 'var(--text-main)' }}>Arama Sonuçları</h2>
-          <div style={{
-            display: 'flex', alignItems: 'center', gap: '10px',
-            background: 'var(--bg-card)',
-            border: '1px solid var(--border)',
-            borderRadius: '8px', padding: '8px 16px',
-            width: '400px', boxShadow: '0 2px 4px rgba(0,0,0,0.02)'
-          }}>
-            <Search size={16} color="var(--text-dim)" />
-            <input
-              type="text"
-              placeholder="Bileşen veya parça numarası ara..."
-              value={searchQuery}
-              onChange={(e) => setSearchQuery(e.target.value)}
-              onKeyDown={(e) => e.key === 'Enter' && handleSearch()}
-              style={{
-                background: 'none', border: 'none', outline: 'none',
-                color: 'var(--text-main)', fontSize: '0.95rem', flex: 1,
-                fontFamily: 'Inter, sans-serif',
-              }}
-            />
+          
+          <div style={{ display: 'flex', alignItems: 'center', gap: '12px', flex: 1, justifyContent: 'flex-end', minWidth: '300px' }}>
+            <div style={{
+              display: 'flex', alignItems: 'center', gap: '10px',
+              background: 'var(--bg-card)',
+              border: '1px solid var(--border)',
+              borderRadius: '8px', padding: '8px 16px',
+              flex: 1, maxWidth: '400px', boxShadow: '0 2px 4px rgba(0,0,0,0.02)'
+            }}>
+              <Search size={16} color="var(--text-dim)" />
+              <input
+                type="text"
+                placeholder="Bileşen veya parça numarası ara..."
+                value={searchQuery}
+                onChange={(e) => setSearchQuery(e.target.value)}
+                onKeyDown={(e) => e.key === 'Enter' && handleSearch()}
+                style={{
+                  background: 'none', border: 'none', outline: 'none',
+                  color: 'var(--text-main)', fontSize: '0.95rem', flex: 1,
+                  fontFamily: 'Inter, sans-serif',
+                }}
+              />
+            </div>
             <button
-              onClick={() => handleSearch()}
-              style={{
-                background: 'var(--bg)', border: '1px solid var(--border)',
-                borderRadius: '5px', padding: '4px 12px', color: 'var(--text-main)',
-                fontSize: '0.85rem', cursor: 'pointer', fontFamily: 'Inter, sans-serif',
-                transition: 'all 0.15s', fontWeight: '500'
-              }}
-              className="search-btn-mini"
+              onClick={() => navigate('/')}
+              className="premium-button"
+              style={{ padding: '9px 20px', whiteSpace: 'nowrap' }}
             >
-              {loading ? '...' : 'Ara'}
+              {loading ? '...' : 'Yeni Analiz'}
             </button>
           </div>
+        </div>
+
+        {/* Filter Bar */}
+        <div style={{ 
+          marginBottom: '24px', 
+          display: 'flex', 
+          alignItems: 'center', 
+          justifyContent: 'space-between',
+          padding: '12px 20px',
+          background: 'var(--bg-card)',
+          border: '1px solid var(--border)',
+          borderRadius: '12px',
+          gap: '20px',
+          flexWrap: 'wrap'
+        }}>
+          <div style={{ display: 'flex', alignItems: 'center', gap: '20px', flexWrap: 'wrap' }}>
+            <div style={{ display: 'flex', alignItems: 'center', gap: '8px' }}>
+              <span style={{ fontSize: '0.82rem', color: 'var(--text-muted)', fontWeight: '600' }}>Kategori:</span>
+              <select 
+                value={filterCategory}
+                onChange={(e) => setFilterCategory(e.target.value)}
+                style={{ 
+                  padding: '6px 12px', borderRadius: '6px', border: '1px solid var(--border)',
+                  background: 'var(--bg)', color: 'var(--text-main)', fontSize: '0.85rem', outline: 'none'
+                }}
+              >
+                {categories.map(cat => <option key={cat} value={cat}>{cat}</option>)}
+              </select>
+            </div>
+
+            <div style={{ display: 'flex', alignItems: 'center', gap: '8px' }}>
+              <span style={{ fontSize: '0.82rem', color: 'var(--text-muted)', fontWeight: '600' }}>Sırala:</span>
+              <select 
+                value={sortBy}
+                onChange={(e) => setSortBy(e.target.value)}
+                style={{ 
+                  padding: '6px 12px', borderRadius: '6px', border: '1px solid var(--border)',
+                  background: 'var(--bg)', color: 'var(--text-main)', fontSize: '0.85rem', outline: 'none'
+                }}
+              >
+                <option value="price-low">En Düşük Fiyat</option>
+                <option value="price-high">En Yüksek Fiyat</option>
+                <option value="stock-high">En Yüksek Stok</option>
+              </select>
+            </div>
+          </div>
+
+          <button style={{
+            display: 'flex', alignItems: 'center', gap: '8px',
+            background: 'none', border: '1px solid var(--border)',
+            borderRadius: '6px', padding: '6px 14px',
+            fontSize: '0.82rem', fontWeight: '600', color: 'var(--text-main)',
+            cursor: 'pointer', transition: 'all 0.15s'
+          }} className="search-btn-mini">
+            <Package size={14} /> Rapor Oluştur
+          </button>
         </div>
 
         {/* Component Grid - 2 columns */}
@@ -383,7 +509,7 @@ const Dashboard = () => {
            </div>
         ) : (
           <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fill, minmax(340px, 1fr))', gap: '16px', marginBottom: '30px' }}>
-            {results.map((comp, i) => (
+            {filteredAndSortedResults.map((comp, i) => (
               <ComponentCard
                 key={comp.id}
                 comp={comp}
@@ -411,7 +537,7 @@ const Dashboard = () => {
         }
         @keyframes spin { 100% { transform: rotate(360deg); } }
       `}</style>
-    </div>
+    </motion.div>
   );
 };
 

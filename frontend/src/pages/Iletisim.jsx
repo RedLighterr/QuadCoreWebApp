@@ -1,6 +1,7 @@
 import React, { useState, useRef } from 'react';
 import ReCAPTCHA from 'react-google-recaptcha';
 import { Mail, Phone, MapPin, Send } from 'lucide-react';
+import { motion } from 'framer-motion';
 
 const Iletisim = () => {
   const [formData, setFormData] = useState({ name: '', email: '', subject: '', message: '' });
@@ -29,7 +30,13 @@ const Iletisim = () => {
   };
 
   return (
-    <div style={{ maxWidth: '1000px', margin: '0 auto', padding: '40px 20px' }}>
+    <motion.div 
+      initial={{ opacity: 0, y: 16 }}
+      animate={{ opacity: 1, y: 0 }}
+      exit={{ opacity: 0, y: -16 }}
+      transition={{ duration: 0.35, ease: 'easeOut' }}
+      style={{ maxWidth: '1000px', margin: '0 auto', padding: '40px 20px', width: '100%' }}
+    >
       <div style={{ textAlign: 'center', marginBottom: '50px' }}>
         <h1 style={{ fontSize: '2.5rem', fontWeight: '800', color: 'var(--text-main)', marginBottom: '15px' }}>Bizimle İletişime Geçin</h1>
         <p style={{ fontSize: '1.1rem', color: 'var(--text-muted)' }}>Sorularınız, önerileriniz veya işbirliği teklifleriniz için mesaj gönderebilirsiniz.</p>
@@ -111,7 +118,7 @@ const Iletisim = () => {
                 </div>
 
                 {/* reCAPTCHA - Using Google's test key for development (always passes) */}
-                <div style={{ margin: '10px 0' }}>
+                <div style={{ margin: '10px 0', display: 'flex', justifyContent: 'center' }}>
                   <ReCAPTCHA
                     ref={recaptchaRef}
                     sitekey="6LeIxAcTAAAAAJcZVRqyHh71UMIEGNQ_MXjiZKhI"
@@ -128,7 +135,7 @@ const Iletisim = () => {
           </div>
         </div>
       </div>
-    </div>
+    </motion.div>
   );
 };
 
