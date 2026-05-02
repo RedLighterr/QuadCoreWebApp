@@ -1437,3 +1437,128 @@
 2026-05-03 00:20:21,310 [INFO] httpx: HTTP Request: GET https://www.komponentci.net/ "HTTP/1.1 200 OK"
 2026-05-03 00:20:22,950 [INFO] root: AFC is enabled with max remote calls: 10.
 2026-05-03 00:20:23,770 [INFO] root: AFC is enabled with max remote calls: 10.
+2026-05-03 00:20:52,098 [INFO] app.scraper.clients: Karma Piyasa Operasyonu (TR + Global): MCU66
+2026-05-03 00:20:53,840 [INFO] httpx: HTTP Request: GET https://www.komponentci.net/arama?q=MCU66 "HTTP/1.1 302 Object moved"
+2026-05-03 00:20:53,912 [INFO] httpx: HTTP Request: GET https://www.robotistan.com/arama?q=MCU66 "HTTP/1.1 200 OK"
+2026-05-03 00:20:53,983 [INFO] httpx: HTTP Request: GET https://www.direnc.net/arama?q=MCU66 "HTTP/1.1 200 OK"
+2026-05-03 00:20:53,993 [INFO] httpx: HTTP Request: GET https://www.robolinkmarket.com/arama?q=MCU66 "HTTP/1.1 200 OK"
+2026-05-03 00:20:54,032 [INFO] httpx: HTTP Request: GET https://www.robo90.com/arama?q=MCU66 "HTTP/1.1 200 OK"
+2026-05-03 00:20:54,335 [INFO] httpx: HTTP Request: GET https://www.findchips.com/search/MCU66?currency=EUR "HTTP/1.1 200 OK"
+2026-05-03 00:20:54,659 [INFO] httpx: HTTP Request: GET https://www.komponentci.net/ "HTTP/1.1 200 OK"
+2026-05-03 00:20:55,122 [INFO] root: AFC is enabled with max remote calls: 10.
+2026-05-03 00:20:55,946 [INFO] root: AFC is enabled with max remote calls: 10.
+2026-05-03 00:23:12,766 [INFO] app.main: Uygulama başlatılıyor...
+2026-05-03 00:23:12,794 [INFO] app.scraper.clients: Karma Piyasa Operasyonu (TR + Global): MCU66
+2026-05-03 00:23:14,907 [INFO] httpx: HTTP Request: GET https://www.komponentci.net/arama?q=MCU66 "HTTP/1.1 302 Object moved"
+2026-05-03 00:23:15,024 [INFO] httpx: HTTP Request: GET https://www.robotistan.com/arama?q=MCU66 "HTTP/1.1 200 OK"
+2026-05-03 00:23:15,205 [INFO] httpx: HTTP Request: GET https://www.robolinkmarket.com/arama?q=MCU66 "HTTP/1.1 200 OK"
+2026-05-03 00:23:15,206 [INFO] httpx: HTTP Request: GET https://www.direnc.net/arama?q=MCU66 "HTTP/1.1 200 OK"
+2026-05-03 00:23:15,207 [INFO] httpx: HTTP Request: GET https://www.robo90.com/arama?q=MCU66 "HTTP/1.1 200 OK"
+2026-05-03 00:23:15,431 [INFO] httpx: HTTP Request: GET https://www.findchips.com/search/MCU66?currency=EUR "HTTP/1.1 200 OK"
+2026-05-03 00:23:15,814 [INFO] httpx: HTTP Request: GET https://www.komponentci.net/ "HTTP/1.1 200 OK"
+2026-05-03 00:23:16,745 [INFO] sentence_transformers.base.model: No device provided, using cpu
+2026-05-03 00:23:17,541 [INFO] httpx: HTTP Request: HEAD https://huggingface.co/sentence-transformers/all-MiniLM-L6-v2/resolve/main/modules.json "HTTP/1.1 307 Temporary Redirect"
+2026-05-03 00:23:17,542 [WARNING] huggingface_hub.utils._http: Warning: You are sending unauthenticated requests to the HF Hub. Please set a HF_TOKEN to enable higher rate limits and faster downloads.
+2026-05-03 00:23:17,616 [INFO] httpx: HTTP Request: HEAD https://huggingface.co/api/resolve-cache/models/sentence-transformers/all-MiniLM-L6-v2/c9745ed1d9f207416be6d2e6f8de32d1f16199bf/modules.json "HTTP/1.1 200 OK"
+2026-05-03 00:23:17,796 [INFO] httpx: HTTP Request: HEAD https://huggingface.co/sentence-transformers/all-MiniLM-L6-v2/resolve/main/config_sentence_transformers.json "HTTP/1.1 307 Temporary Redirect"
+2026-05-03 00:23:17,869 [INFO] httpx: HTTP Request: HEAD https://huggingface.co/api/resolve-cache/models/sentence-transformers/all-MiniLM-L6-v2/c9745ed1d9f207416be6d2e6f8de32d1f16199bf/config_sentence_transformers.json "HTTP/1.1 200 OK"
+2026-05-03 00:23:17,871 [INFO] sentence_transformers.base.model: Loading SentenceTransformer model from sentence-transformers/all-MiniLM-L6-v2.
+2026-05-03 00:23:18,194 [INFO] httpx: HTTP Request: HEAD https://huggingface.co/sentence-transformers/all-MiniLM-L6-v2/resolve/main/config_sentence_transformers.json "HTTP/1.1 307 Temporary Redirect"
+2026-05-03 00:23:18,372 [INFO] httpx: HTTP Request: HEAD https://huggingface.co/api/resolve-cache/models/sentence-transformers/all-MiniLM-L6-v2/c9745ed1d9f207416be6d2e6f8de32d1f16199bf/config_sentence_transformers.json "HTTP/1.1 200 OK"
+2026-05-03 00:23:18,551 [INFO] httpx: HTTP Request: HEAD https://huggingface.co/sentence-transformers/all-MiniLM-L6-v2/resolve/main/README.md "HTTP/1.1 307 Temporary Redirect"
+2026-05-03 00:23:18,625 [INFO] httpx: HTTP Request: HEAD https://huggingface.co/api/resolve-cache/models/sentence-transformers/all-MiniLM-L6-v2/c9745ed1d9f207416be6d2e6f8de32d1f16199bf/README.md "HTTP/1.1 200 OK"
+2026-05-03 00:23:18,801 [INFO] httpx: HTTP Request: HEAD https://huggingface.co/sentence-transformers/all-MiniLM-L6-v2/resolve/main/modules.json "HTTP/1.1 307 Temporary Redirect"
+2026-05-03 00:23:18,872 [INFO] httpx: HTTP Request: HEAD https://huggingface.co/api/resolve-cache/models/sentence-transformers/all-MiniLM-L6-v2/c9745ed1d9f207416be6d2e6f8de32d1f16199bf/modules.json "HTTP/1.1 200 OK"
+2026-05-03 00:23:19,046 [INFO] httpx: HTTP Request: HEAD https://huggingface.co/sentence-transformers/all-MiniLM-L6-v2/resolve/main/sentence_bert_config.json "HTTP/1.1 307 Temporary Redirect"
+2026-05-03 00:23:19,116 [INFO] httpx: HTTP Request: HEAD https://huggingface.co/api/resolve-cache/models/sentence-transformers/all-MiniLM-L6-v2/c9745ed1d9f207416be6d2e6f8de32d1f16199bf/sentence_bert_config.json "HTTP/1.1 200 OK"
+2026-05-03 00:23:19,302 [INFO] httpx: HTTP Request: HEAD https://huggingface.co/sentence-transformers/all-MiniLM-L6-v2/resolve/main/adapter_config.json "HTTP/1.1 404 Not Found"
+2026-05-03 00:23:19,546 [INFO] httpx: HTTP Request: HEAD https://huggingface.co/sentence-transformers/all-MiniLM-L6-v2/resolve/main/config.json "HTTP/1.1 307 Temporary Redirect"
+2026-05-03 00:23:19,632 [INFO] httpx: HTTP Request: HEAD https://huggingface.co/api/resolve-cache/models/sentence-transformers/all-MiniLM-L6-v2/c9745ed1d9f207416be6d2e6f8de32d1f16199bf/config.json "HTTP/1.1 200 OK"
+2026-05-03 00:23:19,955 [INFO] httpx: HTTP Request: HEAD https://huggingface.co/sentence-transformers/all-MiniLM-L6-v2/resolve/main/processor_config.json "HTTP/1.1 404 Not Found"
+2026-05-03 00:23:20,132 [INFO] httpx: HTTP Request: HEAD https://huggingface.co/sentence-transformers/all-MiniLM-L6-v2/resolve/main/preprocessor_config.json "HTTP/1.1 404 Not Found"
+2026-05-03 00:23:20,308 [INFO] httpx: HTTP Request: HEAD https://huggingface.co/sentence-transformers/all-MiniLM-L6-v2/resolve/main/video_preprocessor_config.json "HTTP/1.1 404 Not Found"
+2026-05-03 00:23:20,488 [INFO] httpx: HTTP Request: HEAD https://huggingface.co/sentence-transformers/all-MiniLM-L6-v2/resolve/main/preprocessor_config.json "HTTP/1.1 404 Not Found"
+2026-05-03 00:23:20,662 [INFO] httpx: HTTP Request: HEAD https://huggingface.co/sentence-transformers/all-MiniLM-L6-v2/resolve/main/tokenizer_config.json "HTTP/1.1 307 Temporary Redirect"
+2026-05-03 00:23:20,733 [INFO] httpx: HTTP Request: HEAD https://huggingface.co/api/resolve-cache/models/sentence-transformers/all-MiniLM-L6-v2/c9745ed1d9f207416be6d2e6f8de32d1f16199bf/tokenizer_config.json "HTTP/1.1 200 OK"
+2026-05-03 00:23:21,001 [INFO] httpx: HTTP Request: HEAD https://huggingface.co/sentence-transformers/all-MiniLM-L6-v2/resolve/main/config.json "HTTP/1.1 307 Temporary Redirect"
+2026-05-03 00:23:21,081 [INFO] httpx: HTTP Request: HEAD https://huggingface.co/api/resolve-cache/models/sentence-transformers/all-MiniLM-L6-v2/c9745ed1d9f207416be6d2e6f8de32d1f16199bf/config.json "HTTP/1.1 200 OK"
+2026-05-03 00:23:21,274 [INFO] httpx: HTTP Request: HEAD https://huggingface.co/sentence-transformers/all-MiniLM-L6-v2/resolve/main/config.json "HTTP/1.1 307 Temporary Redirect"
+2026-05-03 00:23:21,351 [INFO] httpx: HTTP Request: HEAD https://huggingface.co/api/resolve-cache/models/sentence-transformers/all-MiniLM-L6-v2/c9745ed1d9f207416be6d2e6f8de32d1f16199bf/config.json "HTTP/1.1 200 OK"
+2026-05-03 00:23:21,522 [INFO] httpx: HTTP Request: HEAD https://huggingface.co/sentence-transformers/all-MiniLM-L6-v2/resolve/main/tokenizer_config.json "HTTP/1.1 307 Temporary Redirect"
+2026-05-03 00:23:21,594 [INFO] httpx: HTTP Request: HEAD https://huggingface.co/api/resolve-cache/models/sentence-transformers/all-MiniLM-L6-v2/c9745ed1d9f207416be6d2e6f8de32d1f16199bf/tokenizer_config.json "HTTP/1.1 200 OK"
+2026-05-03 00:23:21,803 [INFO] httpx: HTTP Request: GET https://huggingface.co/api/models/sentence-transformers/all-MiniLM-L6-v2/tree/main/additional_chat_templates?recursive=false&expand=false "HTTP/1.1 404 Not Found"
+2026-05-03 00:23:22,026 [INFO] httpx: HTTP Request: GET https://huggingface.co/api/models/sentence-transformers/all-MiniLM-L6-v2/tree/main?recursive=true&expand=false "HTTP/1.1 200 OK"
+2026-05-03 00:23:22,334 [INFO] httpx: HTTP Request: HEAD https://huggingface.co/sentence-transformers/all-MiniLM-L6-v2/resolve/main/1_Pooling/config.json "HTTP/1.1 307 Temporary Redirect"
+2026-05-03 00:23:22,405 [INFO] httpx: HTTP Request: HEAD https://huggingface.co/api/resolve-cache/models/sentence-transformers/all-MiniLM-L6-v2/c9745ed1d9f207416be6d2e6f8de32d1f16199bf/1_Pooling%2Fconfig.json "HTTP/1.1 200 OK"
+2026-05-03 00:23:22,583 [INFO] httpx: HTTP Request: GET https://huggingface.co/api/models/sentence-transformers/all-MiniLM-L6-v2 "HTTP/1.1 200 OK"
+2026-05-03 00:23:22,630 [INFO] root: AFC is enabled with max remote calls: 10.
+2026-05-03 00:23:23,683 [INFO] root: AFC is enabled with max remote calls: 10.
+2026-05-03 00:23:26,744 [INFO] app.scraper.clients: Karma Piyasa Operasyonu (TR + Global): MCU66
+2026-05-03 00:23:28,386 [INFO] httpx: HTTP Request: GET https://www.komponentci.net/arama?q=MCU66 "HTTP/1.1 302 Object moved"
+2026-05-03 00:23:28,607 [INFO] httpx: HTTP Request: GET https://www.robolinkmarket.com/arama?q=MCU66 "HTTP/1.1 200 OK"
+2026-05-03 00:23:28,608 [INFO] httpx: HTTP Request: GET https://www.direnc.net/arama?q=MCU66 "HTTP/1.1 200 OK"
+2026-05-03 00:23:28,620 [INFO] httpx: HTTP Request: GET https://www.robo90.com/arama?q=MCU66 "HTTP/1.1 200 OK"
+2026-05-03 00:23:28,641 [INFO] httpx: HTTP Request: GET https://www.robotistan.com/arama?q=MCU66 "HTTP/1.1 200 OK"
+2026-05-03 00:23:29,132 [INFO] httpx: HTTP Request: GET https://www.findchips.com/search/MCU66?currency=EUR "HTTP/1.1 200 OK"
+2026-05-03 00:23:29,137 [INFO] httpx: HTTP Request: GET https://www.komponentci.net/ "HTTP/1.1 200 OK"
+2026-05-03 00:23:29,950 [INFO] root: AFC is enabled with max remote calls: 10.
+2026-05-03 00:24:00,999 [INFO] app.main: Uygulama başlatılıyor...
+2026-05-03 00:24:22,499 [INFO] app.main: Uygulama başlatılıyor...
+2026-05-03 00:24:26,970 [INFO] app.scraper.clients: Karma Piyasa Operasyonu (TR + Global): mcu66
+2026-05-03 00:24:29,024 [INFO] httpx: HTTP Request: GET https://www.robolinkmarket.com/arama?q=mcu66 "HTTP/1.1 200 OK"
+2026-05-03 00:24:29,077 [INFO] httpx: HTTP Request: GET https://www.robo90.com/arama?q=mcu66 "HTTP/1.1 200 OK"
+2026-05-03 00:24:29,104 [INFO] httpx: HTTP Request: GET https://www.direnc.net/arama?q=mcu66 "HTTP/1.1 200 OK"
+2026-05-03 00:24:29,386 [INFO] httpx: HTTP Request: GET https://www.komponentci.net/arama?q=mcu66 "HTTP/1.1 302 Object moved"
+2026-05-03 00:24:29,388 [INFO] httpx: HTTP Request: GET https://www.findchips.com/search/mcu66?currency=EUR "HTTP/1.1 200 OK"
+2026-05-03 00:24:29,389 [INFO] httpx: HTTP Request: GET https://www.robotistan.com/arama?q=mcu66 "HTTP/1.1 200 OK"
+2026-05-03 00:24:30,229 [INFO] httpx: HTTP Request: GET https://www.komponentci.net/ "HTTP/1.1 200 OK"
+2026-05-03 00:24:30,996 [INFO] sentence_transformers.base.model: No device provided, using cpu
+2026-05-03 00:24:31,825 [INFO] httpx: HTTP Request: HEAD https://huggingface.co/sentence-transformers/all-MiniLM-L6-v2/resolve/main/modules.json "HTTP/1.1 307 Temporary Redirect"
+2026-05-03 00:24:31,909 [INFO] httpx: HTTP Request: HEAD https://huggingface.co/api/resolve-cache/models/sentence-transformers/all-MiniLM-L6-v2/c9745ed1d9f207416be6d2e6f8de32d1f16199bf/modules.json "HTTP/1.1 200 OK"
+2026-05-03 00:24:32,084 [INFO] httpx: HTTP Request: HEAD https://huggingface.co/sentence-transformers/all-MiniLM-L6-v2/resolve/main/config_sentence_transformers.json "HTTP/1.1 307 Temporary Redirect"
+2026-05-03 00:24:32,164 [INFO] httpx: HTTP Request: HEAD https://huggingface.co/api/resolve-cache/models/sentence-transformers/all-MiniLM-L6-v2/c9745ed1d9f207416be6d2e6f8de32d1f16199bf/config_sentence_transformers.json "HTTP/1.1 200 OK"
+2026-05-03 00:24:32,167 [INFO] sentence_transformers.base.model: Loading SentenceTransformer model from sentence-transformers/all-MiniLM-L6-v2.
+2026-05-03 00:24:32,361 [INFO] httpx: HTTP Request: HEAD https://huggingface.co/sentence-transformers/all-MiniLM-L6-v2/resolve/main/config_sentence_transformers.json "HTTP/1.1 307 Temporary Redirect"
+2026-05-03 00:24:32,362 [WARNING] huggingface_hub.utils._http: Warning: You are sending unauthenticated requests to the HF Hub. Please set a HF_TOKEN to enable higher rate limits and faster downloads.
+2026-05-03 00:24:32,436 [INFO] httpx: HTTP Request: HEAD https://huggingface.co/api/resolve-cache/models/sentence-transformers/all-MiniLM-L6-v2/c9745ed1d9f207416be6d2e6f8de32d1f16199bf/config_sentence_transformers.json "HTTP/1.1 200 OK"
+2026-05-03 00:24:32,721 [INFO] httpx: HTTP Request: HEAD https://huggingface.co/sentence-transformers/all-MiniLM-L6-v2/resolve/main/README.md "HTTP/1.1 307 Temporary Redirect"
+2026-05-03 00:24:32,800 [INFO] httpx: HTTP Request: HEAD https://huggingface.co/api/resolve-cache/models/sentence-transformers/all-MiniLM-L6-v2/c9745ed1d9f207416be6d2e6f8de32d1f16199bf/README.md "HTTP/1.1 200 OK"
+2026-05-03 00:24:32,976 [INFO] httpx: HTTP Request: HEAD https://huggingface.co/sentence-transformers/all-MiniLM-L6-v2/resolve/main/modules.json "HTTP/1.1 307 Temporary Redirect"
+2026-05-03 00:24:33,047 [INFO] httpx: HTTP Request: HEAD https://huggingface.co/api/resolve-cache/models/sentence-transformers/all-MiniLM-L6-v2/c9745ed1d9f207416be6d2e6f8de32d1f16199bf/modules.json "HTTP/1.1 200 OK"
+2026-05-03 00:24:33,226 [INFO] httpx: HTTP Request: HEAD https://huggingface.co/sentence-transformers/all-MiniLM-L6-v2/resolve/main/sentence_bert_config.json "HTTP/1.1 307 Temporary Redirect"
+2026-05-03 00:24:33,297 [INFO] httpx: HTTP Request: HEAD https://huggingface.co/api/resolve-cache/models/sentence-transformers/all-MiniLM-L6-v2/c9745ed1d9f207416be6d2e6f8de32d1f16199bf/sentence_bert_config.json "HTTP/1.1 200 OK"
+2026-05-03 00:24:33,485 [INFO] httpx: HTTP Request: HEAD https://huggingface.co/sentence-transformers/all-MiniLM-L6-v2/resolve/main/adapter_config.json "HTTP/1.1 404 Not Found"
+2026-05-03 00:24:33,689 [INFO] httpx: HTTP Request: HEAD https://huggingface.co/sentence-transformers/all-MiniLM-L6-v2/resolve/main/config.json "HTTP/1.1 307 Temporary Redirect"
+2026-05-03 00:24:33,795 [INFO] httpx: HTTP Request: HEAD https://huggingface.co/api/resolve-cache/models/sentence-transformers/all-MiniLM-L6-v2/c9745ed1d9f207416be6d2e6f8de32d1f16199bf/config.json "HTTP/1.1 200 OK"
+2026-05-03 00:24:34,117 [INFO] httpx: HTTP Request: HEAD https://huggingface.co/sentence-transformers/all-MiniLM-L6-v2/resolve/main/processor_config.json "HTTP/1.1 404 Not Found"
+2026-05-03 00:24:34,307 [INFO] httpx: HTTP Request: HEAD https://huggingface.co/sentence-transformers/all-MiniLM-L6-v2/resolve/main/preprocessor_config.json "HTTP/1.1 404 Not Found"
+2026-05-03 00:24:34,510 [INFO] httpx: HTTP Request: HEAD https://huggingface.co/sentence-transformers/all-MiniLM-L6-v2/resolve/main/video_preprocessor_config.json "HTTP/1.1 404 Not Found"
+2026-05-03 00:24:34,709 [INFO] httpx: HTTP Request: HEAD https://huggingface.co/sentence-transformers/all-MiniLM-L6-v2/resolve/main/preprocessor_config.json "HTTP/1.1 404 Not Found"
+2026-05-03 00:24:34,908 [INFO] httpx: HTTP Request: HEAD https://huggingface.co/sentence-transformers/all-MiniLM-L6-v2/resolve/main/tokenizer_config.json "HTTP/1.1 307 Temporary Redirect"
+2026-05-03 00:24:34,989 [INFO] httpx: HTTP Request: HEAD https://huggingface.co/api/resolve-cache/models/sentence-transformers/all-MiniLM-L6-v2/c9745ed1d9f207416be6d2e6f8de32d1f16199bf/tokenizer_config.json "HTTP/1.1 200 OK"
+2026-05-03 00:24:35,207 [INFO] httpx: HTTP Request: HEAD https://huggingface.co/sentence-transformers/all-MiniLM-L6-v2/resolve/main/config.json "HTTP/1.1 307 Temporary Redirect"
+2026-05-03 00:24:35,280 [INFO] httpx: HTTP Request: HEAD https://huggingface.co/api/resolve-cache/models/sentence-transformers/all-MiniLM-L6-v2/c9745ed1d9f207416be6d2e6f8de32d1f16199bf/config.json "HTTP/1.1 200 OK"
+2026-05-03 00:24:35,460 [INFO] httpx: HTTP Request: HEAD https://huggingface.co/sentence-transformers/all-MiniLM-L6-v2/resolve/main/config.json "HTTP/1.1 307 Temporary Redirect"
+2026-05-03 00:24:35,532 [INFO] httpx: HTTP Request: HEAD https://huggingface.co/api/resolve-cache/models/sentence-transformers/all-MiniLM-L6-v2/c9745ed1d9f207416be6d2e6f8de32d1f16199bf/config.json "HTTP/1.1 200 OK"
+2026-05-03 00:24:35,711 [INFO] httpx: HTTP Request: HEAD https://huggingface.co/sentence-transformers/all-MiniLM-L6-v2/resolve/main/tokenizer_config.json "HTTP/1.1 307 Temporary Redirect"
+2026-05-03 00:24:35,784 [INFO] httpx: HTTP Request: HEAD https://huggingface.co/api/resolve-cache/models/sentence-transformers/all-MiniLM-L6-v2/c9745ed1d9f207416be6d2e6f8de32d1f16199bf/tokenizer_config.json "HTTP/1.1 200 OK"
+2026-05-03 00:24:35,979 [INFO] httpx: HTTP Request: GET https://huggingface.co/api/models/sentence-transformers/all-MiniLM-L6-v2/tree/main/additional_chat_templates?recursive=false&expand=false "HTTP/1.1 404 Not Found"
+2026-05-03 00:24:36,179 [INFO] httpx: HTTP Request: GET https://huggingface.co/api/models/sentence-transformers/all-MiniLM-L6-v2/tree/main?recursive=true&expand=false "HTTP/1.1 200 OK"
+2026-05-03 00:24:36,397 [INFO] httpx: HTTP Request: HEAD https://huggingface.co/sentence-transformers/all-MiniLM-L6-v2/resolve/main/1_Pooling/config.json "HTTP/1.1 307 Temporary Redirect"
+2026-05-03 00:24:36,471 [INFO] httpx: HTTP Request: HEAD https://huggingface.co/api/resolve-cache/models/sentence-transformers/all-MiniLM-L6-v2/c9745ed1d9f207416be6d2e6f8de32d1f16199bf/1_Pooling%2Fconfig.json "HTTP/1.1 200 OK"
+2026-05-03 00:24:36,650 [INFO] httpx: HTTP Request: GET https://huggingface.co/api/models/sentence-transformers/all-MiniLM-L6-v2 "HTTP/1.1 200 OK"
+2026-05-03 00:24:36,698 [INFO] root: AFC is enabled with max remote calls: 10.
+2026-05-03 00:24:37,317 [INFO] root: AFC is enabled with max remote calls: 10.
+2026-05-03 00:24:51,944 [INFO] app.scraper.clients: Karma Piyasa Operasyonu (TR + Global): esp32
+2026-05-03 00:24:53,735 [INFO] httpx: HTTP Request: GET https://www.komponentci.net/arama?q=esp32 "HTTP/1.1 302 Object moved"
+2026-05-03 00:24:53,857 [INFO] httpx: HTTP Request: GET https://www.findchips.com/search/esp32?currency=EUR "HTTP/1.1 200 OK"
+2026-05-03 00:24:53,873 [INFO] httpx: HTTP Request: GET https://www.direnc.net/arama?q=esp32 "HTTP/1.1 200 OK"
+2026-05-03 00:24:53,914 [INFO] httpx: HTTP Request: GET https://www.robolinkmarket.com/arama?q=esp32 "HTTP/1.1 200 OK"
+2026-05-03 00:24:53,965 [INFO] httpx: HTTP Request: GET https://www.robo90.com/arama?q=esp32 "HTTP/1.1 200 OK"
+2026-05-03 00:24:53,980 [INFO] httpx: HTTP Request: GET https://www.robotistan.com/arama?q=esp32 "HTTP/1.1 200 OK"
+2026-05-03 00:24:55,391 [INFO] httpx: HTTP Request: GET https://www.komponentci.net/ "HTTP/1.1 200 OK"
+2026-05-03 00:24:55,635 [INFO] root: AFC is enabled with max remote calls: 10.
+2026-05-03 00:24:56,253 [INFO] root: AFC is enabled with max remote calls: 10.
+2026-05-03 00:24:56,982 [INFO] root: AFC is enabled with max remote calls: 10.
+2026-05-03 00:24:57,568 [INFO] root: AFC is enabled with max remote calls: 10.
+2026-05-03 00:27:14,488 [INFO] app.main: Uygulama başlatılıyor...
