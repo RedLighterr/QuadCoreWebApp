@@ -2,6 +2,8 @@ import React, { useState, useRef } from 'react';
 import ReCAPTCHA from 'react-google-recaptcha';
 import { Mail, Phone, MapPin, Send } from 'lucide-react';
 import { motion } from 'framer-motion';
+import { submitContactForm, getSettings } from '../services/api';
+import { useEffect } from 'react';
 
 const Iletisim = () => {
   const [formData, setFormData] = useState({ name: '', email: '', subject: '', message: '' });
@@ -9,20 +11,36 @@ const Iletisim = () => {
   const [submitted, setSubmitted] = useState(false);
   const recaptchaRef = useRef(null);
 
-  const handleSubmit = (e) => {
+  const [isSubmitting, setIsSubmitting] = useState(false);
+  const [settings, setSettings] = useState(null);
+
+  useEffect(() => {
+    const fetchSettings = async () => {
+      const data = await getSettings();
+      if (data) setSettings(data);
+    };
+    fetchSettings();
+  }, []);
+
+  const handleSubmit = async (e) => {
     e.preventDefault();
     if (!captchaValue) {
       alert('Lütfen robot olmadığınızı doğrulayın!');
       return;
     }
     
-    // Simulate sending email/form data
-    setTimeout(() => {
+    setIsSubmitting(true);
+    try {
+      await submitContactForm(formData);
       setSubmitted(true);
       setFormData({ name: '', email: '', subject: '', message: '' });
       recaptchaRef.current.reset();
       setCaptchaValue(null);
-    }, 1000);
+    } catch (error) {
+      alert('Mesaj gönderilirken bir hata oluştu. Lütfen tekrar deneyin.');
+    } finally {
+      setIsSubmitting(false);
+    }
   };
 
   const handleChange = (e) => {
@@ -55,7 +73,7 @@ const Iletisim = () => {
                 </div>
                 <div>
                   <p style={{ fontSize: '0.8rem', color: 'var(--text-muted)', fontWeight: '600', textTransform: 'uppercase' }}>E-Posta</p>
-                  <p style={{ fontSize: '1rem', color: 'var(--text-main)' }}>info@componentsource.ai</p>
+                  <p style={{ fontSize: '1rem', color: 'var(--text-main)' }}>{settings?.contactEmail || 'info@componentsource.ai'}</p>
                 </div>
               </div>
 
@@ -65,7 +83,7 @@ const Iletisim = () => {
                 </div>
                 <div>
                   <p style={{ fontSize: '0.8rem', color: 'var(--text-muted)', fontWeight: '600', textTransform: 'uppercase' }}>Telefon</p>
-                  <p style={{ fontSize: '1rem', color: 'var(--text-main)' }}>+90 (212) 555 01 23</p>
+                  <p style={{ fontSize: '1rem', color: 'var(--text-main)' }}>{settings?.phone || '+90 (212) 555 01 23'}</p>
                 </div>
               </div>
 
@@ -75,7 +93,7 @@ const Iletisim = () => {
                 </div>
                 <div>
                   <p style={{ fontSize: '0.8rem', color: 'var(--text-muted)', fontWeight: '600', textTransform: 'uppercase' }}>Adres</p>
-                  <p style={{ fontSize: '1rem', color: 'var(--text-main)' }}>Teknopark İstanbul<br/>Pendik, İstanbul</p>
+                  <p style={{ fontSize: '1rem', color: 'var(--text-main)', whiteSpace: 'pre-line' }}>{settings?.fullAddress || 'Teknopark İstanbul\nPendik, İstanbul'}</p>
                 </div>
               </div>
             </div>
@@ -126,9 +144,14 @@ const Iletisim = () => {
                   />
                 </div>
 
-                <button type="submit" className="premium-button" style={{ display: 'flex', alignItems: 'center', justifyContent: 'center', gap: '10px', padding: '14px' }}>
-                  <Send size={18} />
-                  Mesajı Gönder
+                <button 
+                  type="submit" 
+                  disabled={isSubmitting}
+                  className="premium-button" 
+                  style={{ display: 'flex', alignItems: 'center', justifyContent: 'center', gap: '10px', padding: '14px', opacity: isSubmitting ? 0.7 : 1 }}
+                >
+                  {isSubmitting ? 'Gönderiliyor...' : 'Mesaj Gönder'}
+                  {!isSubmitting && <Send size={18} />}
                 </button>
               </form>
             )}

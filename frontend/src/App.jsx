@@ -8,10 +8,11 @@ import Iletisim from './pages/Iletisim';
 import Sss from './pages/Sss';
 import Gizlilik from './pages/Gizlilik';
 import Kullanim from './pages/Kullanim';
+import { getSettings } from './services/api';
 
 
 
-function Sidebar({ isOpen, setIsOpen }) {
+function Sidebar({ isOpen, setIsOpen, siteName }) {
   const [isHovered, setIsHovered] = useState(false);
   const [items, setItems] = useState([]);
   const [activeDropdown, setActiveDropdown] = useState(null);
@@ -105,7 +106,7 @@ function Sidebar({ isOpen, setIsOpen }) {
               <Aperture size={16} color="#fff" />
             </div>
             <span style={{ fontSize: '1.05rem', fontWeight: '800', color: 'var(--text-main)', opacity: isExpanded ? 1 : 0, transition: 'opacity 0.2s', whiteSpace: 'nowrap', display: isExpanded ? 'block' : 'none' }}>
-              SourceFlow
+              {siteName || 'SourceFlow'}
             </span>
           </Link>
 
@@ -283,7 +284,7 @@ function Sidebar({ isOpen, setIsOpen }) {
           <div style={{ width: 22, height: 22, borderRadius: '4px', background: 'var(--accent)', display: 'flex', alignItems: 'center', justifyContent: 'center', flexShrink: 0 }}>
             <Cpu size={12} color="#fff" />
           </div>
-          {isExpanded && <span style={{ fontSize: '0.8rem', color: 'var(--text-dim)' }}>SourceFlow AI</span>}
+          {isExpanded && <span style={{ fontSize: '0.8rem', color: 'var(--text-dim)' }}>{siteName || 'SourceFlow'} AI</span>}
         </div>
       </aside>
 
@@ -331,12 +332,13 @@ function Sidebar({ isOpen, setIsOpen }) {
   );
 }
 
-function TopNav({ isSidebarOpen, setIsSidebarOpen }) {
+function TopNav({ isSidebarOpen, setIsSidebarOpen, siteName }) {
   const location = useLocation();
   const navLinks = [
     { to: '/', label: 'Ana Sayfa' },
     { to: '/about', label: 'Hakkımızda' },
-    { to: '/iletisim', label: 'İletişim' }
+    { to: '/iletisim', label: 'İletişim' },
+    { to: '/sss', label: 'SSS' }
   ];
 
   return (
@@ -355,7 +357,7 @@ function TopNav({ isSidebarOpen, setIsSidebarOpen }) {
       <div style={{ display: 'flex', alignItems: 'center', gap: '15px' }}>
         {!isSidebarOpen && (
           <div style={{ display: 'flex', alignItems: 'center', gap: '8px', color: 'var(--text-main)', fontWeight: '700' }}>
-            <Cpu size={18} color="var(--accent)" /> SourceFlow
+            <Cpu size={18} color="var(--accent)" /> {siteName || 'SourceFlow'}
           </div>
         )}
       </div>
@@ -386,14 +388,13 @@ function TopNav({ isSidebarOpen, setIsSidebarOpen }) {
         })}
       </div>
 
-      {/* Right - Admin Link only (User login removed) */}
-      <div style={{ display: 'flex', alignItems: 'center', gap: '12px' }}>
-      </div>
+      {/* Right - Spacing */}
+      <div style={{ width: '40px' }}></div>
     </nav>
   );
 }
 
-function Footer() {
+function Footer({ siteName }) {
   return (
     <footer style={{
       background: 'var(--bg-sidebar)',
@@ -405,7 +406,7 @@ function Footer() {
       <div style={{ maxWidth: '1200px', margin: '0 auto', padding: '0 20px', display: 'flex', justifyContent: 'space-between', flexWrap: 'wrap', gap: '30px' }}>
         <div style={{ display: 'flex', flexDirection: 'column', gap: '10px', maxWidth: '300px' }}>
           <div style={{ display: 'flex', alignItems: 'center', gap: '8px', color: 'var(--text-main)', fontWeight: '700', fontSize: '1.2rem' }}>
-            <Cpu size={20} color="var(--accent)" /> SourceFlow AI
+            <Cpu size={20} color="var(--accent)" /> {siteName || 'SourceFlow'} AI
           </div>
           <p style={{ color: 'var(--text-muted)', fontSize: '0.85rem', lineHeight: '1.6' }}>
             Akıllı tedarik zinciri optimizasyonu ile donanım üretim süreçlerinizi hızlandırın. En iyi parçaları en uygun fiyata bulun.
@@ -450,7 +451,7 @@ function Footer() {
         color: 'var(--text-dim)', 
         fontSize: '0.8rem' 
       }}>
-        <div>&copy; {new Date().getFullYear()} SourceFlow AI. Tüm hakları saklıdır.</div>
+        <div>&copy; {new Date().getFullYear()} {siteName || 'SourceFlow'} AI. Tüm hakları saklıdır.</div>
         <div style={{ display: 'flex', gap: '16px' }}>
           <a href="#" style={{ color: 'var(--text-dim)', transition: 'color 0.2s', display: 'flex' }} onMouseEnter={(e) => e.currentTarget.style.color = 'var(--accent)'} onMouseLeave={(e) => e.currentTarget.style.color = 'var(--text-dim)'} title="LinkedIn">
             <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"></path><rect x="2" y="9" width="4" height="12"></rect><circle cx="4" cy="4" r="2"></circle></svg>
@@ -467,18 +468,19 @@ function Footer() {
   );
 }
 
-function PageTitleUpdater() {
+function PageTitleUpdater({ siteName }) {
   const location = useLocation();
   useEffect(() => {
+    const site = siteName || 'SourceFlow';
     const titles = {
-      '/': 'SourceFlow AI | Akıllı Tedarik ve Komponent Analiz Aracı',
-      '/about': 'Hakkımızda | SourceFlow AI',
-      '/iletisim': 'İletişim | SourceFlow AI',
-      '/sss': 'Sıkça Sorulan Sorular | SourceFlow AI',
-      '/gizlilik': 'Gizlilik Politikası | SourceFlow AI',
-      '/kullanim': 'Kullanım Şartları | SourceFlow AI',
+      '/': `${site} AI | Akıllı Tedarik ve Komponent Analiz Aracı`,
+      '/about': `Hakkımızda | ${site} AI`,
+      '/iletisim': `İletişim | ${site} AI`,
+      '/sss': `Sıkça Sorulan Sorular | ${site} AI`,
+      '/gizlilik': `Gizlilik Politikası | ${site} AI`,
+      '/kullanim': `Kullanım Şartları | ${site} AI`,
     };
-    document.title = titles[location.pathname] || 'SourceFlow AI';
+    document.title = titles[location.pathname] || `${site} AI`;
   }, [location]);
   return null;
 }
@@ -534,12 +536,48 @@ function SupportWidget() {
 
 function App() {
   const [isSidebarOpen, setIsSidebarOpen] = useState(false);
+  const [siteSettings, setSiteSettings] = useState(null);
+
+  useEffect(() => {
+    const fetchSettings = async () => {
+      const data = await getSettings();
+      if (data) setSiteSettings(data);
+    };
+    fetchSettings();
+    
+    // Admin panelinden değişiklik yapıldığında (storage event) güncelle
+    window.addEventListener('storage', fetchSettings);
+    return () => window.removeEventListener('storage', fetchSettings);
+  }, []);
+
+  const siteName = siteSettings?.siteName;
+
+  if (siteSettings?.maintenanceMode) {
+    return (
+      <div style={{ height: '100vh', display: 'flex', flexDirection: 'column', alignItems: 'center', justifyContent: 'center', background: 'var(--bg)', textAlign: 'center', padding: '20px' }}>
+        <div style={{ width: 80, height: 80, borderRadius: '50%', background: 'rgba(2, 132, 199, 0.1)', display: 'flex', alignItems: 'center', justifyContent: 'center', color: 'var(--accent)', marginBottom: '24px' }}>
+          <Settings size={40} className="spin-slow" />
+        </div>
+        <h1 style={{ fontSize: '2rem', fontWeight: '800', color: 'var(--text-main)', marginBottom: '16px' }}>Bakım Çalışması Yapılıyor</h1>
+        <p style={{ maxWidth: '500px', color: 'var(--text-muted)', lineHeight: '1.6', marginBottom: '32px' }}>
+          {siteName || 'Sitemiz'} şu anda daha iyi bir deneyim sunmak için güncelleniyor. Lütfen kısa bir süre sonra tekrar deneyin.
+        </p>
+        <div style={{ fontSize: '0.85rem', color: 'var(--text-dim)' }}>
+          &copy; {new Date().getFullYear()} {siteName || 'SourceFlow'} AI
+        </div>
+        <style>{`
+          .spin-slow { animation: spin 4s linear infinite; }
+          @keyframes spin { from { transform: rotate(0deg); } to { transform: rotate(360deg); } }
+        `}</style>
+      </div>
+    );
+  }
 
   return (
     <Router>
-      <PageTitleUpdater />
+      <PageTitleUpdater siteName={siteName} />
       <div style={{ background: 'var(--bg)', minHeight: '100vh', color: 'var(--text-main)', display: 'flex' }}>
-        <Sidebar isOpen={isSidebarOpen} setIsOpen={setIsSidebarOpen} />
+        <Sidebar isOpen={isSidebarOpen} setIsOpen={setIsSidebarOpen} siteName={siteName} />
         
         {/* Main Wrapper */}
         <div className="main-wrapper" style={{ 
@@ -551,7 +589,7 @@ function App() {
           minHeight: '100vh',
           width: '100%'
         }}>
-          <TopNav isSidebarOpen={isSidebarOpen} setIsSidebarOpen={setIsSidebarOpen} />
+          <TopNav isSidebarOpen={isSidebarOpen} setIsSidebarOpen={setIsSidebarOpen} siteName={siteName} />
           
           {/* Page content offset for navbar */}
           <div style={{ paddingTop: '52px', flex: 1, display: 'flex', flexDirection: 'column' }}>
@@ -563,7 +601,7 @@ function App() {
               <Route path="/gizlilik" element={<Gizlilik />} />
               <Route path="/kullanim" element={<Kullanim />} />
             </Routes>
-            <Footer />
+            <Footer siteName={siteName} />
           </div>
         </div>
       </div>

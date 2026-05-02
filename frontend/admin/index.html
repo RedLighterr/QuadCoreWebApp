@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>QuadCore | Admin Panel</title>
+    <meta name="description" content="QuadCore Admin Yönetim Paneli">
+    <link rel="stylesheet" href="./styles/main.css">
+    <script>
+      // Sayfa yüklenir yüklenmez localStorage'dan SEO bilgisini uygula
+      (function() {
+        try {
+          var settings = JSON.parse(localStorage.getItem('qc_admin_settings') || '{}');
+          if (settings.siteName) {
+            document.title = settings.siteName;
+          }
+          if (settings.siteDescription) {
+            var meta = document.querySelector('meta[name="description"]');
+            if (meta) meta.setAttribute('content', settings.siteDescription);
+          }
+        } catch(e) {}
+      })();
+    </script>
+</head>
+<body>
+    <div id="root"></div>
+    <script type="module" src="./main.jsx"></script>
+</body>
+</html>

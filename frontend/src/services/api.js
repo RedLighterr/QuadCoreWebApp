@@ -144,6 +144,25 @@ export const listProducts = async () => {
 export const submitContactForm = async (formData) => {
   if (USE_MOCK) {
     await mockDelay(1000);
+    // Mesajı admin paneline (localStorage) aktar
+    try {
+      const existing = JSON.parse(localStorage.getItem('qc_admin_messages') || '[]');
+      const newMessage = {
+        id: `msg_${Date.now()}`,
+        name: formData.name || 'İsimsiz',
+        email: formData.email || 'Belirtilmedi',
+        subject: formData.subject || 'Konu Yok',
+        content: formData.message || '',
+        date: new Date().toISOString(),
+        isRead: false,
+        reply: null
+      };
+      localStorage.setItem('qc_admin_messages', JSON.stringify([newMessage, ...existing]));
+      // Admin panelindeki (diğer sekmedeki) anlık güncellemeyi tetikle
+      window.dispatchEvent(new Event('storage'));
+    } catch (e) {
+      console.error("Mesaj admin paneline aktarılamadı", e);
+    }
     return { success: true, message: 'Mesajınız alındı!' };
   }
 
@@ -222,6 +241,47 @@ export const healthCheck = async () => {
     return response.data;
   } catch {
     return { status: 'offline' };
+  }
+};
+
+// ─── 8. SSS (Sıkça Sorulan Sorular) ─────────────────────────────────────────
+// Backend endpoint: GET /faq
+export const getFAQs = async () => {
+  if (USE_MOCK) {
+    try {
+      const saved = localStorage.getItem('qc_admin_faqs');
+      return saved ? JSON.parse(saved) : [];
+    } catch {
+      return [];
+    }
+  }
+
+  try {
+    const response = await apiClient.get('/faq');
+    return response.data;
+  } catch (error) {
+    console.error('[API] getFAQs hatası:', error.message);
+    return [];
+  }
+};
+
+// ─── 9. Sistem Ayarları ─────────────────────────────────────────────────────
+export const getSettings = async () => {
+  if (USE_MOCK) {
+    try {
+      const saved = localStorage.getItem('qc_admin_settings');
+      return saved ? JSON.parse(saved) : null;
+    } catch {
+      return null;
+    }
+  }
+
+  try {
+    const response = await apiClient.get('/settings');
+    return response.data;
+  } catch (error) {
+    console.error('[API] getSettings hatası:', error.message);
+    return null;
   }
 };
 

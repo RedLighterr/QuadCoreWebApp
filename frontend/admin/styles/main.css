@@ -1,0 +1,141 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Outfit:wght@300;400;500;600;700;800&display=swap');
+@import "tailwindcss";
+
+/* ═══════════════════════════════════════════════
+   LIGHT THEME — Tek tema, açık tonlar
+═══════════════════════════════════════════════ */
+:root {
+  /* Backgrounds */
+  --bg-primary:    #eef1fa;
+  --bg-secondary:  #e4e8f5;
+  --bg-card:       #ffffff;
+  --bg-card-alt:   #f4f6fd;
+  --bg-navbar:     #ffffff;
+
+  /* Borders */
+  --border-color:  #dde3f4;
+  --border-hover:  #b8c3e8;
+
+  /* Text */
+  --text-primary:   #1a1e38;
+  --text-secondary: #5560888;
+  --text-muted:     #9099b8;
+
+  /* Accent */
+  --accent-blue:        #4361ee;
+  --accent-blue-hover:  #3451d1;
+  --accent-purple:      #7c3aed;
+  --accent-teal:        #0d9488;
+
+  /* Nav active state */
+  --nav-active-text:   #4361ee;
+  --nav-active-border: #4361ee;
+  --nav-active-bg:     #eef1ff;
+
+  /* Shadows */
+  --shadow-sm: 0 1px 4px rgba(67,97,238,0.08), 0 1px 2px rgba(0,0,0,0.05);
+  --shadow-md: 0 4px 20px rgba(67,97,238,0.12), 0 2px 8px rgba(0,0,0,0.06);
+  --shadow-lg: 0 8px 32px rgba(67,97,238,0.16), 0 4px 12px rgba(0,0,0,0.08);
+
+  /* Inputs */
+  --input-bg:         #f8f9ff;
+  --input-border:     #dde3f4;
+  --input-focus-ring: rgba(67,97,238,0.2);
+
+  /* Scrollbar */
+  --scrollbar-thumb: #ccd2ed;
+}
+
+/* ═══════════════════════════════════════════════
+   RESETS
+═══════════════════════════════════════════════ */
+* { margin: 0; padding: 0; box-sizing: border-box; }
+
+body {
+  font-family: 'Outfit', 'Inter', sans-serif;
+  background-color: var(--bg-primary);
+  color: var(--text-primary);
+  min-height: 100vh;
+  overflow-x: hidden;
+}
+
+/* ═══════════════════════════════════════════════
+   CARD
+═══════════════════════════════════════════════ */
+.card {
+  background: var(--bg-card);
+  border: 1px solid var(--border-color);
+  border-radius: 16px;
+  box-shadow: var(--shadow-sm);
+  transition: all 0.25s ease;
+}
+.card:hover {
+  border-color: var(--border-hover);
+  box-shadow: var(--shadow-md);
+}
+
+/* ═══════════════════════════════════════════════
+   GRADIENTS & UTILITIES
+═══════════════════════════════════════════════ */
+.text-gradient {
+  background: linear-gradient(135deg, var(--accent-blue), var(--accent-purple));
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+/* ═══════════════════════════════════════════════
+   CUSTOM SCROLLBAR
+═══════════════════════════════════════════════ */
+::-webkit-scrollbar { width: 5px; }
+::-webkit-scrollbar-track { background: transparent; }
+::-webkit-scrollbar-thumb {
+  background: var(--scrollbar-thumb);
+  border-radius: 10px;
+}
+::-webkit-scrollbar-thumb:hover { background: var(--border-hover); }
+
+/* ═══════════════════════════════════════════════
+   ANIMATIONS
+═══════════════════════════════════════════════ */
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(12px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+@keyframes slideIn {
+  from { opacity: 0; transform: translateX(-10px); }
+  to   { opacity: 1; transform: translateX(0); }
+}
+@keyframes shake {
+  0%, 100% { transform: translateX(0); }
+  20%, 60%  { transform: translateX(-6px); }
+  40%, 80%  { transform: translateX(6px); }
+}
+
+.animate-fade-in  { animation: fadeIn  0.45s ease forwards; }
+.animate-slide-in { animation: slideIn 0.35s ease forwards; }
+.animate-shake    { animation: shake   0.4s ease; }
+
+/* ═══════════════════════════════════════════════
+   RESPONSIVE (MOBILE)
+═══════════════════════════════════════════════ */
+@media (max-width: 768px) {
+  .top-nav {
+    padding: 12px 16px !important;
+  }
+  .bottom-nav {
+    padding: 0 12px !important;
+  }
+  .main-container {
+    padding: 16px 12px !important;
+  }
+  
+  /* Additional mobile fixes */
+  .top-nav > div { gap: 12px !important; }
+  .top-nav input { width: 180px !important; }
+  h1 { font-size: 18px !important; }
+}
+
+@media (max-width: 480px) {
+  .top-nav input { width: 140px !important; }
+}

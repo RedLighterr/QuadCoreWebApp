@@ -1,6 +1,8 @@
 import React from 'react';
 import { motion } from 'framer-motion';
 import { Target, Eye, Users, Globe, Zap, Shield, TrendingUp, Award } from 'lucide-react';
+import { getSettings } from '../services/api';
+import { useState, useEffect } from 'react';
 
 const fadeUp = {
   initial: { opacity: 0, y: 30 },
@@ -34,6 +36,18 @@ const milestones = [
 ];
 
 const About = () => {
+  const [settings, setSettings] = useState(null);
+
+  useEffect(() => {
+    const fetchSettings = async () => {
+      const data = await getSettings();
+      if (data) setSettings(data);
+    };
+    fetchSettings();
+  }, []);
+
+  const about = settings?.about || {};
+
   return (
     <motion.div
       initial={{ opacity: 0, y: 16 }}
@@ -63,8 +77,7 @@ const About = () => {
             <span style={{ color: 'var(--accent)' }}>Yeniden Tanımlıyoruz</span>
           </h1>
           <p style={{ fontSize: '1.2rem', color: 'var(--text-muted)', lineHeight: '1.8', marginBottom: '0' }}>
-            SourceFlow AI, elektronik donanım geliştiricileri ve satın alma ekiplerinin dünya genelindeki
-            distribütörlerden en uygun fiyatlı, en hızlı teslimatlı bileşeni saniyeler içinde bulmasını sağlar.
+            {about.description || "SourceFlow AI, elektronik donanım geliştiricileri ve satın alma ekiplerinin dünya genelindeki distribütörlerden en uygun fiyatlı, en hızlı teslimatlı bileşeni saniyeler içinde bulmasını sağlar."}
           </p>
         </motion.div>
       </section>
@@ -113,14 +126,14 @@ const About = () => {
               color: '#0284c7',
               bg: 'rgba(2,132,199,0.08)',
               title: 'Misyonumuz',
-              desc: 'Donanım geliştiricilerinin en iyi bileşenleri, en doğru fiyata ve en hızlı şekilde bulmasını sağlayarak küresel çapta inovasyonun önündeki lojistik engelleri kaldırmak. Her satın alma kararını veriye dayalı, şeffaf ve güvenilir hale getirmek.'
+              desc: about.mission || 'Donanım geliştiricilerinin en iyi bileşenleri, en doğru fiyata ve en hızlı şekilde bulmasını sağlayarak küresel çapta inovasyonun önündeki lojistik engelleri kaldırmak. Her satın alma kararını veriye dayalı, şeffaf ve güvenilir hale getirmek.'
             },
             {
               icon: <Eye size={28} />,
               color: '#7c3aed',
               bg: 'rgba(124,58,237,0.08)',
               title: 'Vizyonumuz',
-              desc: 'Dünyadaki tüm elektronik bileşen tedarik zincirini tek bir otonom platformda birleştirerek geleceğin fabrikaları ve Ar-Ge merkezleri için endüstri standardı olmak. 2030\'a kadar küresel elektronik üretim maliyetlerini %30 azaltmak.'
+              desc: about.vision || 'Dünyadaki tüm elektronik bileşen tedarik zincirini tek bir otonom platformda birleştirerek geleceğin fabrikaları ve Ar-Ge merkezleri için endüstri standardı olmak. 2030\'a kadar küresel elektronik üretim maliyetlerini %30 azaltmak.'
             }
           ].map((card, i) => (
             <motion.div
