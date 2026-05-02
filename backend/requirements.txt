@@ -10,3 +10,4 @@ sentence-transformers>=2.7.0
 scikit-learn>=1.4.0
 google-genai>=1.0.0
 curl_cffi>=0.7.0
+requests>=2.31.0
