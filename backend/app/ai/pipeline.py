@@ -5,6 +5,25 @@ from .market import analyze_market
 from .pricing import calculate_cost, calculate_sale_price
 from .ranking import get_top3
 from .description import generate_description_cached
+from .currency import convert_to_try
+
+def _resolve_price_try(price, currency, usd_try=1.0):
+    currency = (currency or "TRY").strip().lower()
+    try:
+        price = float(price)
+    except Exception:
+        price = 0.0
+
+    if currency == "usd" and usd_try != 1.0:
+        return round(price * usd_try, 2)
+
+    try:
+        return round(convert_to_try(price, currency), 2)
+    except Exception:
+        if currency == "try":
+            return round(price, 2)
+        return round(price, 2)
+
 
 def process(products, usd_try=1.0):
     """
@@ -12,6 +31,8 @@ def process(products, usd_try=1.0):
     Global ürünler kendi para birimiyle, TR ürünleri TRY ile ayrı değerlendirilir.
     """
     products = preprocess(products)
+    for p in products:
+        p["price_try"] = _resolve_price_try(p.get("price", 0), p.get("currency", "TRY"), usd_try)
     products = compute_embeddings(products)
     clusters = cluster_products(products)
 
@@ -40,22 +61,13 @@ def process(products, usd_try=1.0):
         ref_price = pricing.get("price", cost * 1.25)
         ref_suggestion = f"json\\n{{\\n  \\\"price\\\": {round(ref_price, 2)},\\n  \\\"reason\\\": \\\"Distribütörlerden çekilen saf fiyatlar baz alınmıştır.\\\"\\n}}\\n"
 
-        # Global ürün varsa: top3=global, market_refs=TR
-        # Sadece TR ürün varsa: top3=TR (ucuzdan pahalıya), market_refs=[]
-        if global_products:
-            top3 = [clean_product(x) for x in sorted(global_products, key=lambda x: x["price"])[:6]]
-            market_refs = [clean_product(x) for x in tr_products]
-        else:
-            top3 = [clean_product(x) for x in sorted(tr_products, key=lambda x: x["price"])[:6]]
-            market_refs = []
-
         results.append({
             "product": cluster[0]["title"],
             "cost": cost,
             "pricing": pricing,
             "ref_suggestion": ref_suggestion,
-            "top3": top3,
-            "market_refs": market_refs,
+            "top3": [clean_product(x) for x in sorted(analysis_products, key=lambda x: x["price"])[:6]],
+            "market_refs": [clean_product(x) for x in tr_products],
             "description": generate_description_cached(cluster[0]),
         })
 
@@ -67,6 +79,7 @@ def clean_product(p):
         "source": p["source"],
         "region": p["region"],
         "price": round(p["price"], 2),
-        "price_try": round(p["price"], 2),  # ham değeri olduğu gibi taşıyoruz
+        "price_try": round(p.get("price_try", p["price"]), 2),
+        "currency": p.get("currency", "TRY"),
         "url": p.get("url")
     }
