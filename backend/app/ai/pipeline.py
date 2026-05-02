@@ -40,13 +40,22 @@ def process(products, usd_try=1.0):
         ref_price = pricing.get("price", cost * 1.25)
         ref_suggestion = f"json\\n{{\\n  \\\"price\\\": {round(ref_price, 2)},\\n  \\\"reason\\\": \\\"Distribütörlerden çekilen saf fiyatlar baz alınmıştır.\\\"\\n}}\\n"
 
+        # Global ürün varsa: top3=global, market_refs=TR
+        # Sadece TR ürün varsa: top3=TR (ucuzdan pahalıya), market_refs=[]
+        if global_products:
+            top3 = [clean_product(x) for x in sorted(global_products, key=lambda x: x["price"])[:6]]
+            market_refs = [clean_product(x) for x in tr_products]
+        else:
+            top3 = [clean_product(x) for x in sorted(tr_products, key=lambda x: x["price"])[:6]]
+            market_refs = []
+
         results.append({
             "product": cluster[0]["title"],
             "cost": cost,
             "pricing": pricing,
             "ref_suggestion": ref_suggestion,
-            "top3": [clean_product(x) for x in sorted(analysis_products, key=lambda x: x["price"])[:6]],
-            "market_refs": [clean_product(x) for x in tr_products],
+            "top3": top3,
+            "market_refs": market_refs,
             "description": generate_description_cached(cluster[0]),
         })
 

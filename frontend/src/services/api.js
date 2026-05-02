@@ -16,7 +16,7 @@ const USE_MOCK     = import.meta.env.VITE_USE_MOCK !== 'false'; // varsayılan: 
 // ─── Axios İstemcisi ────────────────────────────────────────────────────────
 const apiClient = axios.create({
   baseURL: API_BASE_URL,
-  timeout: 15000,
+  timeout: 45000,
   headers: { 'Content-Type': 'application/json' },
 });
 
@@ -83,7 +83,9 @@ function transformToCards(aiAnalysisList) {
   // Tüm ürünleri (top3 + market_refs) birleştir
   const allResults = [...top3, ...market_refs];
   
-  const aiHint = pricing ? `AI Önerisi: €${pricing.price} (Kâr: %${(pricing.margin * 100).toFixed(1)})` : '';
+  const aiHint = (pricing && pricing.price != null && pricing.margin != null)
+    ? `AI Önerisi: ${pricing.price.toFixed(2)} TRY (Kâr: %${(pricing.margin * 100).toFixed(1)})`
+    : 'Piyasa analizi tamamlandı';
 
   return allResults.map((item, index) => ({
     id: index + 1,

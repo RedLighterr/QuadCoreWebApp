@@ -333,3 +333,199 @@
 2026-05-02 22:21:31,039 [INFO] httpx: HTTP Request: GET https://www.robolinkmarket.com/arama?q=74HC00 "HTTP/1.1 200 OK"
 2026-05-02 22:21:32,149 [INFO] httpx: HTTP Request: GET https://www.komponentci.net/ "HTTP/1.1 200 OK"
 2026-05-02 22:21:34,821 [INFO] root: AFC is enabled with max remote calls: 10.
+2026-05-02 22:26:14,002 [INFO] app.scraper.clients: Karma Piyasa Operasyonu (TR + Global): esp32
+2026-05-02 22:26:16,275 [INFO] httpx: HTTP Request: GET https://www.komponentci.net/arama?q=esp32 "HTTP/1.1 302 Object moved"
+2026-05-02 22:26:16,410 [INFO] httpx: HTTP Request: GET https://www.findchips.com/search/esp32?currency=EUR "HTTP/1.1 200 OK"
+2026-05-02 22:26:16,415 [INFO] httpx: HTTP Request: GET https://www.robo90.com/arama?q=esp32 "HTTP/1.1 200 OK"
+2026-05-02 22:26:16,438 [INFO] httpx: HTTP Request: GET https://www.direnc.net/arama?q=esp32 "HTTP/1.1 200 OK"
+2026-05-02 22:26:16,638 [INFO] httpx: HTTP Request: GET https://www.robolinkmarket.com/arama?q=esp32 "HTTP/1.1 200 OK"
+2026-05-02 22:26:16,641 [INFO] httpx: HTTP Request: GET https://www.robotistan.com/arama?q=esp32 "HTTP/1.1 200 OK"
+2026-05-02 22:26:17,061 [INFO] httpx: HTTP Request: GET https://www.komponentci.net/ "HTTP/1.1 200 OK"
+2026-05-02 22:26:17,961 [INFO] root: AFC is enabled with max remote calls: 10.
+2026-05-02 22:26:39,552 [INFO] app.scraper.clients: Karma Piyasa Operasyonu (TR + Global): celal
+2026-05-02 22:26:41,728 [INFO] httpx: HTTP Request: GET https://www.komponentci.net/arama?q=celal "HTTP/1.1 302 Object moved"
+2026-05-02 22:26:41,804 [INFO] httpx: HTTP Request: GET https://www.direnc.net/arama?q=celal "HTTP/1.1 200 OK"
+2026-05-02 22:26:41,847 [INFO] httpx: HTTP Request: GET https://www.robo90.com/arama?q=celal "HTTP/1.1 200 OK"
+2026-05-02 22:26:42,014 [INFO] httpx: HTTP Request: GET https://www.robolinkmarket.com/arama?q=celal "HTTP/1.1 200 OK"
+2026-05-02 22:26:42,223 [INFO] httpx: HTTP Request: GET https://www.robotistan.com/arama?q=celal "HTTP/1.1 200 OK"
+2026-05-02 22:26:42,390 [INFO] httpx: HTTP Request: GET https://www.findchips.com/search/celal?currency=EUR "HTTP/1.1 200 OK"
+2026-05-02 22:26:42,510 [INFO] httpx: HTTP Request: GET https://www.komponentci.net/ "HTTP/1.1 200 OK"
+2026-05-02 22:26:43,167 [INFO] root: AFC is enabled with max remote calls: 10.
+2026-05-02 22:26:43,983 [INFO] root: AFC is enabled with max remote calls: 10.
+2026-05-02 22:26:44,821 [INFO] root: AFC is enabled with max remote calls: 10.
+2026-05-02 22:26:45,779 [INFO] root: AFC is enabled with max remote calls: 10.
+2026-05-02 22:26:46,848 [INFO] root: AFC is enabled with max remote calls: 10.
+2026-05-02 22:26:47,710 [INFO] root: AFC is enabled with max remote calls: 10.
+2026-05-02 22:27:02,894 [INFO] app.scraper.clients: Karma Piyasa Operasyonu (TR + Global): google
+2026-05-02 22:27:05,043 [INFO] httpx: HTTP Request: GET https://www.komponentci.net/arama?q=google "HTTP/1.1 302 Object moved"
+2026-05-02 22:27:05,078 [INFO] httpx: HTTP Request: GET https://www.findchips.com/search/google?currency=EUR "HTTP/1.1 200 OK"
+2026-05-02 22:27:05,084 [INFO] httpx: HTTP Request: GET https://www.direnc.net/arama?q=google "HTTP/1.1 200 OK"
+2026-05-02 22:27:05,129 [INFO] httpx: HTTP Request: GET https://www.robo90.com/arama?q=google "HTTP/1.1 200 OK"
+2026-05-02 22:27:05,158 [INFO] httpx: HTTP Request: GET https://www.robotistan.com/arama?q=google "HTTP/1.1 200 OK"
+2026-05-02 22:27:05,365 [INFO] httpx: HTTP Request: GET https://www.robolinkmarket.com/arama?q=google "HTTP/1.1 200 OK"
+2026-05-02 22:27:08,962 [INFO] httpx: HTTP Request: GET https://www.komponentci.net/ "HTTP/1.1 200 OK"
+2026-05-02 22:27:09,213 [INFO] root: AFC is enabled with max remote calls: 10.
+2026-05-02 22:27:10,540 [INFO] root: AFC is enabled with max remote calls: 10.
+2026-05-02 22:27:11,621 [INFO] root: AFC is enabled with max remote calls: 10.
+2026-05-02 22:27:15,817 [INFO] root: AFC is enabled with max remote calls: 10.
+2026-05-02 22:27:16,631 [INFO] root: AFC is enabled with max remote calls: 10.
+2026-05-02 22:27:17,475 [INFO] root: AFC is enabled with max remote calls: 10.
+2026-05-02 22:30:17,319 [INFO] app.main: Uygulama başlatılıyor...
+2026-05-02 22:38:21,708 [INFO] app.main: Uygulama başlatılıyor...
+2026-05-02 22:39:37,896 [INFO] app.main: Uygulama başlatılıyor...
+2026-05-02 22:39:51,238 [INFO] app.main: Uygulama başlatılıyor...
+2026-05-02 22:44:29,459 [INFO] app.scraper.clients: Piyasa taraması başladı: 'esp32'
+2026-05-02 22:44:30,760 [INFO] httpx: HTTP Request: GET https://www.robolinkmarket.com/arama?q=esp32 "HTTP/1.1 200 OK"
+2026-05-02 22:44:30,915 [INFO] app.scraper.clients: Robolink HTTP 200 — 'esp32'
+2026-05-02 22:44:31,073 [WARNING] app.scraper.clients: Robolink: ürün elementi bulunamadı
+2026-05-02 22:44:31,074 [INFO] httpx: HTTP Request: GET https://www.robotistan.com/arama?q=esp32 "HTTP/1.1 200 OK"
+2026-05-02 22:44:31,124 [INFO] httpx: HTTP Request: GET https://www.direnc.net/arama?q=esp32 "HTTP/1.1 200 OK"
+2026-05-02 22:44:31,169 [INFO] app.scraper.clients: Robotistan HTTP 200 — 'esp32'
+2026-05-02 22:44:31,298 [INFO] app.scraper.clients: Robotistan: 'ESP32-CAM WiFi Bluetooth Geliştirme Kartı - RHYX M' — 484.16 TRY
+2026-05-02 22:44:31,302 [INFO] app.scraper.clients: Direnc.net HTTP 200 — 'esp32'
+2026-05-02 22:44:31,510 [INFO] app.scraper.clients: Direnc.net: 'ESP32-WROOM-32D Wifi Bluetooth Geliştirme Board' — 323.53 TRY
+2026-05-02 22:44:31,606 [INFO] httpx: HTTP Request: GET https://www.komponentci.net/arama?q=esp32 "HTTP/1.1 302 Object moved"
+2026-05-02 22:44:32,557 [INFO] httpx: HTTP Request: GET https://www.komponentci.net/ "HTTP/1.1 200 OK"
+2026-05-02 22:44:32,624 [INFO] app.scraper.clients: Komponentci HTTP 200 — 'esp32'
+2026-05-02 22:44:32,828 [WARNING] app.scraper.clients: Komponentci: ürün elementi bulunamadı
+2026-05-02 22:44:32,828 [INFO] app.scraper.clients: Toplam 2 sonuç: 'esp32'
+2026-05-02 22:44:32,830 [INFO] sentence_transformers.base.model: No device provided, using cpu
+2026-05-02 22:44:33,962 [INFO] httpx: HTTP Request: HEAD https://huggingface.co/sentence-transformers/all-MiniLM-L6-v2/resolve/main/modules.json "HTTP/1.1 307 Temporary Redirect"
+2026-05-02 22:44:33,963 [WARNING] huggingface_hub.utils._http: Warning: You are sending unauthenticated requests to the HF Hub. Please set a HF_TOKEN to enable higher rate limits and faster downloads.
+2026-05-02 22:44:34,743 [INFO] httpx: HTTP Request: HEAD https://huggingface.co/api/resolve-cache/models/sentence-transformers/all-MiniLM-L6-v2/c9745ed1d9f207416be6d2e6f8de32d1f16199bf/modules.json "HTTP/1.1 200 OK"
+2026-05-02 22:44:35,145 [INFO] httpx: HTTP Request: HEAD https://huggingface.co/sentence-transformers/all-MiniLM-L6-v2/resolve/main/config_sentence_transformers.json "HTTP/1.1 307 Temporary Redirect"
+2026-05-02 22:44:35,394 [INFO] httpx: HTTP Request: HEAD https://huggingface.co/api/resolve-cache/models/sentence-transformers/all-MiniLM-L6-v2/c9745ed1d9f207416be6d2e6f8de32d1f16199bf/config_sentence_transformers.json "HTTP/1.1 200 OK"
+2026-05-02 22:44:35,396 [INFO] sentence_transformers.base.model: Loading SentenceTransformer model from sentence-transformers/all-MiniLM-L6-v2.
+2026-05-02 22:44:35,730 [INFO] httpx: HTTP Request: HEAD https://huggingface.co/sentence-transformers/all-MiniLM-L6-v2/resolve/main/config_sentence_transformers.json "HTTP/1.1 307 Temporary Redirect"
+2026-05-02 22:44:35,927 [INFO] httpx: HTTP Request: HEAD https://huggingface.co/api/resolve-cache/models/sentence-transformers/all-MiniLM-L6-v2/c9745ed1d9f207416be6d2e6f8de32d1f16199bf/config_sentence_transformers.json "HTTP/1.1 200 OK"
+2026-05-02 22:44:36,310 [INFO] httpx: HTTP Request: HEAD https://huggingface.co/sentence-transformers/all-MiniLM-L6-v2/resolve/main/README.md "HTTP/1.1 307 Temporary Redirect"
+2026-05-02 22:44:36,554 [INFO] httpx: HTTP Request: HEAD https://huggingface.co/api/resolve-cache/models/sentence-transformers/all-MiniLM-L6-v2/c9745ed1d9f207416be6d2e6f8de32d1f16199bf/README.md "HTTP/1.1 200 OK"
+2026-05-02 22:44:37,546 [INFO] httpx: HTTP Request: HEAD https://huggingface.co/sentence-transformers/all-MiniLM-L6-v2/resolve/main/modules.json "HTTP/1.1 307 Temporary Redirect"
+2026-05-02 22:44:37,784 [INFO] httpx: HTTP Request: HEAD https://huggingface.co/api/resolve-cache/models/sentence-transformers/all-MiniLM-L6-v2/c9745ed1d9f207416be6d2e6f8de32d1f16199bf/modules.json "HTTP/1.1 200 OK"
+2026-05-02 22:44:38,139 [INFO] httpx: HTTP Request: HEAD https://huggingface.co/sentence-transformers/all-MiniLM-L6-v2/resolve/main/sentence_bert_config.json "HTTP/1.1 307 Temporary Redirect"
+2026-05-02 22:44:38,376 [INFO] httpx: HTTP Request: HEAD https://huggingface.co/api/resolve-cache/models/sentence-transformers/all-MiniLM-L6-v2/c9745ed1d9f207416be6d2e6f8de32d1f16199bf/sentence_bert_config.json "HTTP/1.1 200 OK"
+2026-05-02 22:44:38,748 [INFO] httpx: HTTP Request: HEAD https://huggingface.co/sentence-transformers/all-MiniLM-L6-v2/resolve/main/adapter_config.json "HTTP/1.1 404 Not Found"
+2026-05-02 22:44:39,117 [INFO] httpx: HTTP Request: HEAD https://huggingface.co/sentence-transformers/all-MiniLM-L6-v2/resolve/main/config.json "HTTP/1.1 307 Temporary Redirect"
+2026-05-02 22:44:39,451 [INFO] httpx: HTTP Request: HEAD https://huggingface.co/api/resolve-cache/models/sentence-transformers/all-MiniLM-L6-v2/c9745ed1d9f207416be6d2e6f8de32d1f16199bf/config.json "HTTP/1.1 200 OK"
+2026-05-02 22:44:40,034 [INFO] httpx: HTTP Request: HEAD https://huggingface.co/sentence-transformers/all-MiniLM-L6-v2/resolve/main/processor_config.json "HTTP/1.1 404 Not Found"
+2026-05-02 22:44:40,447 [INFO] httpx: HTTP Request: HEAD https://huggingface.co/sentence-transformers/all-MiniLM-L6-v2/resolve/main/preprocessor_config.json "HTTP/1.1 404 Not Found"
+2026-05-02 22:44:40,776 [INFO] httpx: HTTP Request: HEAD https://huggingface.co/sentence-transformers/all-MiniLM-L6-v2/resolve/main/video_preprocessor_config.json "HTTP/1.1 404 Not Found"
+2026-05-02 22:44:41,104 [INFO] httpx: HTTP Request: HEAD https://huggingface.co/sentence-transformers/all-MiniLM-L6-v2/resolve/main/preprocessor_config.json "HTTP/1.1 404 Not Found"
+2026-05-02 22:44:41,465 [INFO] httpx: HTTP Request: HEAD https://huggingface.co/sentence-transformers/all-MiniLM-L6-v2/resolve/main/tokenizer_config.json "HTTP/1.1 307 Temporary Redirect"
+2026-05-02 22:44:41,708 [INFO] httpx: HTTP Request: HEAD https://huggingface.co/api/resolve-cache/models/sentence-transformers/all-MiniLM-L6-v2/c9745ed1d9f207416be6d2e6f8de32d1f16199bf/tokenizer_config.json "HTTP/1.1 200 OK"
+2026-05-02 22:44:42,038 [INFO] httpx: HTTP Request: HEAD https://huggingface.co/sentence-transformers/all-MiniLM-L6-v2/resolve/main/config.json "HTTP/1.1 307 Temporary Redirect"
+2026-05-02 22:44:42,267 [INFO] httpx: HTTP Request: HEAD https://huggingface.co/api/resolve-cache/models/sentence-transformers/all-MiniLM-L6-v2/c9745ed1d9f207416be6d2e6f8de32d1f16199bf/config.json "HTTP/1.1 200 OK"
+2026-05-02 22:44:42,650 [INFO] httpx: HTTP Request: HEAD https://huggingface.co/sentence-transformers/all-MiniLM-L6-v2/resolve/main/config.json "HTTP/1.1 307 Temporary Redirect"
+2026-05-02 22:44:42,884 [INFO] httpx: HTTP Request: HEAD https://huggingface.co/api/resolve-cache/models/sentence-transformers/all-MiniLM-L6-v2/c9745ed1d9f207416be6d2e6f8de32d1f16199bf/config.json "HTTP/1.1 200 OK"
+2026-05-02 22:44:43,229 [INFO] httpx: HTTP Request: HEAD https://huggingface.co/sentence-transformers/all-MiniLM-L6-v2/resolve/main/tokenizer_config.json "HTTP/1.1 307 Temporary Redirect"
+2026-05-02 22:44:43,493 [INFO] httpx: HTTP Request: HEAD https://huggingface.co/api/resolve-cache/models/sentence-transformers/all-MiniLM-L6-v2/c9745ed1d9f207416be6d2e6f8de32d1f16199bf/tokenizer_config.json "HTTP/1.1 200 OK"
+2026-05-02 22:44:43,867 [INFO] httpx: HTTP Request: GET https://huggingface.co/api/models/sentence-transformers/all-MiniLM-L6-v2/tree/main/additional_chat_templates?recursive=false&expand=false "HTTP/1.1 404 Not Found"
+2026-05-02 22:44:44,465 [INFO] httpx: HTTP Request: GET https://huggingface.co/api/models/sentence-transformers/all-MiniLM-L6-v2/tree/main?recursive=true&expand=false "HTTP/1.1 200 OK"
+2026-05-02 22:44:45,030 [INFO] httpx: HTTP Request: HEAD https://huggingface.co/sentence-transformers/all-MiniLM-L6-v2/resolve/main/1_Pooling/config.json "HTTP/1.1 307 Temporary Redirect"
+2026-05-02 22:44:45,266 [INFO] httpx: HTTP Request: HEAD https://huggingface.co/api/resolve-cache/models/sentence-transformers/all-MiniLM-L6-v2/c9745ed1d9f207416be6d2e6f8de32d1f16199bf/1_Pooling%2Fconfig.json "HTTP/1.1 200 OK"
+2026-05-02 22:44:45,604 [INFO] httpx: HTTP Request: GET https://huggingface.co/api/models/sentence-transformers/all-MiniLM-L6-v2 "HTTP/1.1 200 OK"
+2026-05-02 22:44:45,674 [INFO] root: AFC is enabled with max remote calls: 10.
+2026-05-02 22:50:39,916 [INFO] app.scraper.clients: Piyasa taraması başladı: 'ESP32'
+2026-05-02 22:50:41,413 [INFO] httpx: HTTP Request: GET https://www.robolinkmarket.com/arama?q=ESP32 "HTTP/1.1 200 OK"
+2026-05-02 22:50:41,898 [INFO] httpx: HTTP Request: GET https://www.robotistan.com/arama?q=ESP32 "HTTP/1.1 200 OK"
+2026-05-02 22:50:42,063 [INFO] app.scraper.clients: Robolink HTTP 200 — 'ESP32'
+2026-05-02 22:50:42,128 [WARNING] app.scraper.clients: Robolink: ürün elementi bulunamadı
+2026-05-02 22:50:42,130 [INFO] app.scraper.clients: Robotistan HTTP 200 — 'ESP32'
+2026-05-02 22:50:42,276 [INFO] app.scraper.clients: Robotistan: 'ESP32-CAM WiFi Bluetooth Geliştirme Kartı - RHYX M' — 484.16 TRY
+2026-05-02 22:50:42,300 [INFO] httpx: HTTP Request: GET https://www.direnc.net/arama?q=ESP32 "HTTP/1.1 200 OK"
+2026-05-02 22:50:42,431 [INFO] httpx: HTTP Request: GET https://www.komponentci.net/arama?q=ESP32 "HTTP/1.1 302 Object moved"
+2026-05-02 22:50:42,578 [INFO] app.scraper.clients: Direnc.net HTTP 200 — 'ESP32'
+2026-05-02 22:50:42,717 [INFO] app.scraper.clients: Direnc.net: 'ESP32-WROOM-32D Wifi Bluetooth Geliştirme Board' — 323.53 TRY
+2026-05-02 22:50:43,196 [INFO] httpx: HTTP Request: GET https://www.komponentci.net/ "HTTP/1.1 200 OK"
+2026-05-02 22:50:43,314 [INFO] app.scraper.clients: Komponentci HTTP 200 — 'ESP32'
+2026-05-02 22:50:43,474 [WARNING] app.scraper.clients: Komponentci: ürün elementi bulunamadı
+2026-05-02 22:50:43,475 [INFO] app.scraper.clients: Toplam 2 sonuç: 'ESP32'
+2026-05-02 22:58:50,722 [INFO] app.scraper.clients: Piyasa taraması başladı: 'EPS32'
+2026-05-02 22:58:52,235 [INFO] httpx: HTTP Request: GET https://www.robolinkmarket.com/arama?q=EPS32 "HTTP/1.1 200 OK"
+2026-05-02 22:58:52,373 [INFO] app.scraper.clients: Robolink HTTP 200 — 'EPS32'
+2026-05-02 22:58:52,431 [WARNING] app.scraper.clients: Robolink: ürün elementi bulunamadı
+2026-05-02 22:58:52,433 [INFO] httpx: HTTP Request: GET https://www.direnc.net/arama?q=EPS32 "HTTP/1.1 200 OK"
+2026-05-02 22:58:52,459 [INFO] httpx: HTTP Request: GET https://www.robotistan.com/arama?q=EPS32 "HTTP/1.1 200 OK"
+2026-05-02 22:58:52,578 [INFO] httpx: HTTP Request: GET https://www.komponentci.net/arama?q=EPS32 "HTTP/1.1 302 Object moved"
+2026-05-02 22:58:52,581 [INFO] app.scraper.clients: Robotistan HTTP 200 — 'EPS32'
+2026-05-02 22:58:52,702 [WARNING] app.scraper.clients: Robotistan: ürün elementi bulunamadı
+2026-05-02 22:58:52,703 [INFO] app.scraper.clients: Direnc.net HTTP 200 — 'EPS32'
+2026-05-02 22:58:52,805 [WARNING] app.scraper.clients: Direnc.net: ürün elementi bulunamadı
+2026-05-02 22:58:53,836 [INFO] httpx: HTTP Request: GET https://www.komponentci.net/ "HTTP/1.1 200 OK"
+2026-05-02 22:58:54,403 [INFO] app.scraper.clients: Komponentci HTTP 200 — 'EPS32'
+2026-05-02 22:58:54,578 [WARNING] app.scraper.clients: Komponentci: ürün elementi bulunamadı
+2026-05-02 22:58:54,579 [INFO] app.scraper.clients: Toplam 0 sonuç: 'EPS32'
+2026-05-02 22:59:05,921 [INFO] app.scraper.clients: Piyasa taraması başladı: 'STM32'
+2026-05-02 22:59:07,337 [INFO] httpx: HTTP Request: GET https://www.komponentci.net/arama?q=STM32 "HTTP/1.1 302 Object moved"
+2026-05-02 22:59:07,507 [INFO] httpx: HTTP Request: GET https://www.direnc.net/arama?q=STM32 "HTTP/1.1 200 OK"
+2026-05-02 22:59:07,613 [INFO] httpx: HTTP Request: GET https://www.robolinkmarket.com/arama?q=STM32 "HTTP/1.1 200 OK"
+2026-05-02 22:59:07,699 [INFO] app.scraper.clients: Direnc.net HTTP 200 — 'STM32'
+2026-05-02 22:59:07,803 [INFO] app.scraper.clients: Direnc.net: 'STM32f103C8T6 Arduino Mini Geliştirme Kartı' — 134.8 TRY
+2026-05-02 22:59:10,451 [INFO] httpx: HTTP Request: GET https://www.robotistan.com/arama?q=STM32 "HTTP/1.1 200 OK"
+2026-05-02 22:59:11,431 [INFO] app.scraper.clients: Robolink HTTP 200 — 'STM32'
+2026-05-02 22:59:11,474 [WARNING] app.scraper.clients: Robolink: ürün elementi bulunamadı
+2026-05-02 22:59:11,477 [INFO] app.scraper.clients: Robotistan HTTP 200 — 'STM32'
+2026-05-02 22:59:11,589 [INFO] app.scraper.clients: Robotistan: 'STM8 / STM32 Debugger ve Programlayıcı ST-LINK V2' — 1835.93 TRY
+2026-05-02 22:59:11,591 [INFO] httpx: HTTP Request: GET https://www.komponentci.net/ "HTTP/1.1 200 OK"
+2026-05-02 22:59:11,736 [INFO] app.scraper.clients: Komponentci HTTP 200 — 'STM32'
+2026-05-02 22:59:11,904 [WARNING] app.scraper.clients: Komponentci: ürün elementi bulunamadı
+2026-05-02 22:59:11,905 [INFO] app.scraper.clients: Toplam 2 sonuç: 'STM32'
+2026-05-02 22:59:11,944 [INFO] root: AFC is enabled with max remote calls: 10.
+2026-05-02 22:59:12,865 [INFO] root: AFC is enabled with max remote calls: 10.
+2026-05-02 22:59:43,377 [INFO] app.scraper.clients: Piyasa taraması başladı: 'EPS32'
+2026-05-02 22:59:44,895 [INFO] httpx: HTTP Request: GET https://www.komponentci.net/arama?q=EPS32 "HTTP/1.1 302 Object moved"
+2026-05-02 22:59:45,007 [INFO] httpx: HTTP Request: GET https://www.direnc.net/arama?q=EPS32 "HTTP/1.1 200 OK"
+2026-05-02 22:59:45,103 [INFO] httpx: HTTP Request: GET https://www.robotistan.com/arama?q=EPS32 "HTTP/1.1 200 OK"
+2026-05-02 22:59:45,116 [INFO] httpx: HTTP Request: GET https://www.robolinkmarket.com/arama?q=EPS32 "HTTP/1.1 200 OK"
+2026-05-02 22:59:45,159 [INFO] app.scraper.clients: Direnc.net HTTP 200 — 'EPS32'
+2026-05-02 22:59:45,278 [WARNING] app.scraper.clients: Direnc.net: ürün elementi bulunamadı
+2026-05-02 22:59:45,280 [INFO] app.scraper.clients: Robotistan HTTP 200 — 'EPS32'
+2026-05-02 22:59:45,410 [WARNING] app.scraper.clients: Robotistan: ürün elementi bulunamadı
+2026-05-02 22:59:45,411 [INFO] app.scraper.clients: Robolink HTTP 200 — 'EPS32'
+2026-05-02 22:59:45,461 [WARNING] app.scraper.clients: Robolink: ürün elementi bulunamadı
+2026-05-02 22:59:45,743 [INFO] httpx: HTTP Request: GET https://www.komponentci.net/ "HTTP/1.1 200 OK"
+2026-05-02 22:59:45,817 [INFO] app.scraper.clients: Komponentci HTTP 200 — 'EPS32'
+2026-05-02 22:59:45,990 [WARNING] app.scraper.clients: Komponentci: ürün elementi bulunamadı
+2026-05-02 22:59:45,991 [INFO] app.scraper.clients: Toplam 0 sonuç: 'EPS32'
+2026-05-02 22:59:45,995 [INFO] app.scraper.clients: Piyasa taraması başladı: 'EPS32'
+2026-05-02 22:59:47,092 [INFO] httpx: HTTP Request: GET https://www.komponentci.net/arama?q=EPS32 "HTTP/1.1 302 Object moved"
+2026-05-02 22:59:47,258 [INFO] httpx: HTTP Request: GET https://www.direnc.net/arama?q=EPS32 "HTTP/1.1 200 OK"
+2026-05-02 22:59:47,286 [INFO] httpx: HTTP Request: GET https://www.robolinkmarket.com/arama?q=EPS32 "HTTP/1.1 200 OK"
+2026-05-02 22:59:47,415 [INFO] httpx: HTTP Request: GET https://www.robotistan.com/arama?q=EPS32 "HTTP/1.1 200 OK"
+2026-05-02 22:59:47,436 [INFO] app.scraper.clients: Robolink HTTP 200 — 'EPS32'
+2026-05-02 22:59:47,618 [WARNING] app.scraper.clients: Robolink: ürün elementi bulunamadı
+2026-05-02 22:59:47,622 [INFO] app.scraper.clients: Direnc.net HTTP 200 — 'EPS32'
+2026-05-02 22:59:47,727 [WARNING] app.scraper.clients: Direnc.net: ürün elementi bulunamadı
+2026-05-02 22:59:47,727 [INFO] app.scraper.clients: Robotistan HTTP 200 — 'EPS32'
+2026-05-02 22:59:47,832 [WARNING] app.scraper.clients: Robotistan: ürün elementi bulunamadı
+2026-05-02 22:59:47,833 [INFO] httpx: HTTP Request: GET https://www.komponentci.net/ "HTTP/1.1 200 OK"
+2026-05-02 22:59:47,878 [INFO] app.scraper.clients: Komponentci HTTP 200 — 'EPS32'
+2026-05-02 22:59:48,036 [WARNING] app.scraper.clients: Komponentci: ürün elementi bulunamadı
+2026-05-02 22:59:48,037 [INFO] app.scraper.clients: Toplam 0 sonuç: 'EPS32'
+2026-05-02 23:00:29,354 [INFO] app.scraper.clients: Piyasa taraması başladı: 'EPS32'
+2026-05-02 23:00:30,622 [INFO] httpx: HTTP Request: GET https://www.komponentci.net/arama?q=EPS32 "HTTP/1.1 302 Object moved"
+2026-05-02 23:00:30,771 [INFO] httpx: HTTP Request: GET https://www.direnc.net/arama?q=EPS32 "HTTP/1.1 200 OK"
+2026-05-02 23:00:30,803 [INFO] httpx: HTTP Request: GET https://www.robotistan.com/arama?q=EPS32 "HTTP/1.1 200 OK"
+2026-05-02 23:00:33,573 [INFO] httpx: HTTP Request: GET https://www.robolinkmarket.com/arama?q=EPS32 "HTTP/1.1 200 OK"
+2026-05-02 23:00:40,453 [INFO] app.scraper.clients: Robotistan HTTP 200 — 'EPS32'
+2026-05-02 23:00:40,558 [WARNING] app.scraper.clients: Robotistan: ürün elementi bulunamadı
+2026-05-02 23:00:40,559 [INFO] app.scraper.clients: Direnc.net HTTP 200 — 'EPS32'
+2026-05-02 23:00:40,639 [WARNING] app.scraper.clients: Direnc.net: ürün elementi bulunamadı
+2026-05-02 23:00:40,640 [ERROR] app.scraper.clients: Komponentci hata: 
+2026-05-02 23:00:41,403 [WARNING] app.scraper.clients: Scraper task hatası: 
+2026-05-02 23:00:41,403 [INFO] app.scraper.clients: Toplam 0 sonuç: 'EPS32'
+2026-05-02 23:00:49,577 [INFO] app.scraper.clients: Piyasa taraması başladı: 'ESP32'
+2026-05-02 23:00:50,723 [INFO] httpx: HTTP Request: GET https://www.komponentci.net/arama?q=ESP32 "HTTP/1.1 302 Object moved"
+2026-05-02 23:00:50,979 [INFO] httpx: HTTP Request: GET https://www.direnc.net/arama?q=ESP32 "HTTP/1.1 200 OK"
+2026-05-02 23:00:50,987 [INFO] httpx: HTTP Request: GET https://www.robolinkmarket.com/arama?q=ESP32 "HTTP/1.1 200 OK"
+2026-05-02 23:00:51,011 [INFO] httpx: HTTP Request: GET https://www.robotistan.com/arama?q=ESP32 "HTTP/1.1 200 OK"
+2026-05-02 23:00:51,119 [INFO] app.scraper.clients: Robotistan HTTP 200 — 'ESP32'
+2026-05-02 23:00:51,285 [INFO] app.scraper.clients: Robotistan: 'ESP32-CAM WiFi Bluetooth Geliştirme Kartı - RHYX M' — 484.16 TRY
+2026-05-02 23:00:51,287 [INFO] app.scraper.clients: Direnc.net HTTP 200 — 'ESP32'
+2026-05-02 23:00:51,476 [INFO] app.scraper.clients: Direnc.net: 'ESP32-WROOM-32D Wifi Bluetooth Geliştirme Board' — 323.53 TRY
+2026-05-02 23:00:51,477 [INFO] app.scraper.clients: Robolink HTTP 200 — 'ESP32'
+2026-05-02 23:00:51,586 [WARNING] app.scraper.clients: Robolink: ürün elementi bulunamadı
+2026-05-02 23:00:51,588 [INFO] httpx: HTTP Request: GET https://www.komponentci.net/ "HTTP/1.1 200 OK"
+2026-05-02 23:00:51,590 [INFO] app.scraper.clients: Komponentci HTTP 200 — 'ESP32'
+2026-05-02 23:00:51,789 [WARNING] app.scraper.clients: Komponentci: ürün elementi bulunamadı
+2026-05-02 23:00:51,790 [INFO] app.scraper.clients: Toplam 2 sonuç: 'ESP32'

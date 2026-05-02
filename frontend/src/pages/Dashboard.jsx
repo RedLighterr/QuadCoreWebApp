@@ -393,6 +393,7 @@ const Dashboard = () => {
   const [hasSearched, setHasSearched] = useState(false);
   const [filterCategory, setFilterCategory] = useState('Hepsi');
   const [sortBy, setSortBy] = useState('price-low');
+  const [searchError, setSearchError] = useState(null);
   const location = useLocation();
   const navigate = useNavigate();
 
@@ -424,12 +425,17 @@ const Dashboard = () => {
     setSearchQuery(q);
     setLoading(true);
     setHasSearched(true);
-    
+    setSearchError(null);
+
     try {
       const data = await searchComponents(q);
+      if (!data || data.length === 0) {
+        setSearchError(`"${q}" için distribütörlerden veri alınamadı. Backend çalışıyor mu?`);
+      }
       setResults(data || []);
       setSelectedComp(data && data.length > 0 ? data[0] : null);
-    } catch {
+    } catch (err) {
+      setSearchError(`Bağlantı hatası: ${err.message}`);
       setResults([]);
       setSelectedComp(null);
     } finally {
@@ -569,9 +575,20 @@ const Dashboard = () => {
         </div>
 
         {loading ? (
-           <div style={{ display: 'flex', justifyContent: 'center', padding: '100px' }}>
-              <div style={{ border: '3px solid var(--border)', borderTopColor: 'var(--accent)', borderRadius: '50%', width: 40, height: 40, animation: 'spin 1s linear infinite' }} />
-           </div>
+          <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', padding: '100px', gap: '16px' }}>
+            <div style={{ border: '3px solid var(--border)', borderTopColor: 'var(--accent)', borderRadius: '50%', width: 40, height: 40, animation: 'spin 1s linear infinite' }} />
+            <span style={{ color: 'var(--text-muted)', fontSize: '0.9rem' }}>Distribütörler taranıyor...</span>
+          </div>
+        ) : searchError ? (
+          <div style={{ padding: '40px', textAlign: 'center', color: 'var(--text-muted)' }}>
+            <div style={{ fontSize: '2rem', marginBottom: '12px' }}>⚠</div>
+            <p style={{ fontSize: '0.95rem', marginBottom: '8px', color: 'var(--text-main)' }}>Sonuç Bulunamadı</p>
+            <p style={{ fontSize: '0.85rem', color: 'var(--text-dim)' }}>{searchError}</p>
+          </div>
+        ) : filteredAndSortedResults.length === 0 ? (
+          <div style={{ padding: '40px', textAlign: 'center', color: 'var(--text-muted)' }}>
+            <p style={{ fontSize: '0.95rem' }}>Filtrelerle eşleşen sonuç yok.</p>
+          </div>
         ) : (
           <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fill, minmax(340px, 1fr))', gap: '16px', marginBottom: '30px' }}>
             {filteredAndSortedResults.map((comp, i) => (

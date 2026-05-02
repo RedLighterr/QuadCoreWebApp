@@ -50,9 +50,6 @@ class TradeService:
         global_prods = [p for p in all_market_products if p["region"] == "global"]
         tr_prods = [p for p in all_market_products if p["region"] == "TR"]
 
-        analysis_prods = global_prods or all_market_products
-        best_deal = min(analysis_prods, key=lambda x: x["price"])
-
         def clean(p):
             return {
                 "title": p["title"],
@@ -63,12 +60,25 @@ class TradeService:
                 "url": p.get("url")
             }
 
+        # Global ürün varsa: top3=global, market_refs=TR
+        # Sadece TR ürün varsa: top3=TR, market_refs=[]
+        if global_prods:
+            analysis_prods = global_prods
+            top3 = [clean(p) for p in sorted(global_prods, key=lambda x: x["price"])[:6]]
+            market_refs = [clean(p) for p in tr_prods]
+        else:
+            analysis_prods = all_market_products
+            top3 = [clean(p) for p in sorted(all_market_products, key=lambda x: x["price"])[:6]]
+            market_refs = []
+
+        best_deal = min(analysis_prods, key=lambda x: x["price"])
+
         return [{
             "product": product.name,
             "cost": round(best_deal["price"] * 1.10, 2),
             "pricing": {"status": "ok", "price": round(best_deal["price"] * 1.3, 2), "margin": 0.2},
-            "ref_suggestion": f"json\\n{{\\n  \\\"price\\\": {round(best_deal['price'] * 1.3, 2)},\\n  \\\"reason\\\": \\\"Global fiyatları ve yerel pazar verileri analiz edilmiştir.\\\"\\n}}\\n",
-            "top3": [clean(p) for p in sorted(analysis_prods, key=lambda x: x["price"])[:6]],
-            "market_refs": [clean(p) for p in tr_prods],
-            "description": f"{product.name}: 5'ten fazla yerel ve global distribütör üzerinden analiz edilmiştir."
+            "ref_suggestion": f"json\\n{{\\n  \\\"price\\\": {round(best_deal['price'] * 1.3, 2)},\\n  \\\"reason\\\": \\\"Yerel ve global distribütör verileri analiz edilmiştir.\\\"\\n}}\\n",
+            "top3": top3,
+            "market_refs": market_refs,
+            "description": f"{product.name}: Türkiye'deki distribütörler üzerinden analiz edilmiştir."
         }]
