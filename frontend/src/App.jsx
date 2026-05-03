@@ -8,7 +8,7 @@ import Iletisim from './pages/Iletisim';
 import Sss from './pages/Sss';
 import Gizlilik from './pages/Gizlilik';
 import Kullanim from './pages/Kullanim';
-import { getSettings } from './services/api';
+import { getSettings, getSearchHistory, saveSearchHistory } from './services/api';
 
 function Sidebar({ isOpen, setIsOpen, siteName }) {
   const [isHovered, setIsHovered] = useState(false);
@@ -17,7 +17,80 @@ function Sidebar({ isOpen, setIsOpen, siteName }) {
   const [itemToDelete, setItemToDelete] = useState(null);
   const [renamingId, setRenamingId] = useState(null);
   const [renameValue, setRenameValue] = useState('');
-  const isExpanded = isOpen || isHovered;
+  // Aktif bir etkileşim varken (dropdown, rename, silme onayı) hover daralmasın
+  const interactionLocked = activeDropdown !== null || renamingId !== null || itemToDelete !== null;
+  const isExpanded = isOpen || isHovered || interactionLocked;
+
+  // Hover daraltma için debounce ref'leri — fare kısa süreli çıksa bile sidebar kapanmasın
+  const hoverCloseTimer = React.useRef(null);
+  const hoverOpenTimer = React.useRef(null);
+
+  const handleMouseEnter = React.useCallback(() => {
+    if (hoverCloseTimer.current) {
+      clearTimeout(hoverCloseTimer.current);
+      hoverCloseTimer.current = null;
+    }
+    if (hoverOpenTimer.current) return;
+    // Çok hızlı geçişlerde anlık açılmasın — küçük gecikme stabilite sağlar
+    hoverOpenTimer.current = setTimeout(() => {
+      setIsHovered(true);
+      hoverOpenTimer.current = null;
+    }, 80);
+  }, []);
+
+  const handleMouseLeave = React.useCallback(() => {
+    if (hoverOpenTimer.current) {
+      clearTimeout(hoverOpenTimer.current);
+      hoverOpenTimer.current = null;
+    }
+    if (hoverCloseTimer.current) return;
+    // Kapanırken biraz beklesin (dropdown'a ulaşmaya çalışan kullanıcı için tolerans)
+    hoverCloseTimer.current = setTimeout(() => {
+      setIsHovered(false);
+      hoverCloseTimer.current = null;
+    }, 220);
+  }, []);
+
+  // Cleanup
+  React.useEffect(() => {
+    return () => {
+      if (hoverCloseTimer.current) clearTimeout(hoverCloseTimer.current);
+      if (hoverOpenTimer.current) clearTimeout(hoverOpenTimer.current);
+    };
+  }, []);
+
+  // Geçmişi başlangıçta yükle ve diğer sekmelerden gelen güncellemeleri dinle
+  React.useEffect(() => {
+    let mounted = true;
+    (async () => {
+      const data = await getSearchHistory();
+      if (mounted && Array.isArray(data)) setItems(data);
+    })();
+
+    const handleHistoryUpdate = (e) => {
+      if (e.detail && Array.isArray(e.detail)) {
+        setItems(e.detail);
+      } else {
+        getSearchHistory().then(d => Array.isArray(d) && setItems(d));
+      }
+    };
+    window.addEventListener('searchHistoryUpdated', handleHistoryUpdate);
+
+    return () => {
+      mounted = false;
+      window.removeEventListener('searchHistoryUpdated', handleHistoryUpdate);
+    };
+  }, []);
+
+  // items state'i değişince backend'e kaydet (ilk yükleme hariç)
+  const isFirstRender = React.useRef(true);
+  React.useEffect(() => {
+    if (isFirstRender.current) {
+      isFirstRender.current = false;
+      return;
+    }
+    saveSearchHistory(items).catch(err => console.error('[Sidebar] geçmiş kaydedilemedi:', err.message));
+  }, [items]);
 
   React.useEffect(() => {
     const handleClickOutside = (e) => {
@@ -65,11 +138,12 @@ function Sidebar({ isOpen, setIsOpen, siteName }) {
       )}
 
       <aside
-        className={`app-sidebar ${isOpen ? 'open' : ''}`}
-        onMouseLeave={() => setIsHovered(false)}
+        className={`app-sidebar ${isOpen ? 'open' : ''} ${isExpanded ? 'expanded' : ''}`}
+        onMouseEnter={handleMouseEnter}
+        onMouseLeave={handleMouseLeave}
         style={{
-          width: isExpanded ? '200px' : '64px',
-          minWidth: isExpanded ? '200px' : '64px',
+          width: isExpanded ? '220px' : '64px',
+          minWidth: isExpanded ? '220px' : '64px',
           background: 'var(--bg-sidebar)',
           borderRight: '1px solid var(--border)',
           display: 'flex',
@@ -79,16 +153,16 @@ function Sidebar({ isOpen, setIsOpen, siteName }) {
           top: 0,
           left: 0,
           zIndex: 60,
-          transition: 'width 0.2s cubic-bezier(0.4, 0, 0.2, 1)',
-          boxShadow: isHovered && !isOpen ? '4px 0 15px rgba(0,0,0,0.05)' : 'none',
+          transition: 'width 0.28s cubic-bezier(0.32, 0.72, 0.24, 1), min-width 0.28s cubic-bezier(0.32, 0.72, 0.24, 1), box-shadow 0.2s ease',
+          boxShadow: isExpanded && !isOpen ? '4px 0 24px rgba(15, 23, 42, 0.08)' : 'none',
           overflow: 'hidden',
-          whiteSpace: 'nowrap'
+          whiteSpace: 'nowrap',
+          willChange: 'width',
         }}>
-        <div 
-          onMouseEnter={() => setIsHovered(true)}
-          style={{ 
-            padding: '14px 18px', 
-            borderBottom: '1px solid var(--border)', 
+        <div
+          style={{
+            padding: '14px 18px',
+            borderBottom: '1px solid var(--border)',
             display: 'flex', 
             flexDirection: 'column', 
             alignItems: isExpanded ? 'flex-start' : 'center', 
@@ -205,10 +279,10 @@ function Sidebar({ isOpen, setIsOpen, siteName }) {
                   />
                 ) : (
                   <Link
-                    to={`/?q=${item.label}`}
+                    to={`/?q=${encodeURIComponent(item.label)}`}
                     style={{ textDecoration: 'none', color: 'inherit', flex: 1, overflow: 'hidden', textOverflow: 'ellipsis', whiteSpace: 'nowrap', display: 'flex', alignItems: 'center', gap: '6px' }}
                     title={item.label}
-                >
+                  >
                     {item.pinned && <Pin size={12} style={{ flexShrink: 0, color: 'var(--accent)' }} />}
                     {item.label}
                   </Link>
@@ -330,7 +404,7 @@ function TopNav({ isSidebarOpen, setIsSidebarOpen, siteName }) {
 
   return (
     <nav style={{
-      position: 'fixed', top: 0, left: isSidebarOpen ? '200px' : '64px', right: 0,
+      position: 'fixed', top: 0, left: isSidebarOpen ? '220px' : '64px', right: 0,
       height: '52px', zIndex: 40,
       background: 'rgba(255,255,255,0.85)',
       borderBottom: '1px solid var(--border)',
@@ -338,7 +412,7 @@ function TopNav({ isSidebarOpen, setIsSidebarOpen, siteName }) {
       display: 'flex', alignItems: 'center',
       justifyContent: 'space-between',
       padding: '0 28px',
-      transition: 'left 0.2s ease'
+      transition: 'left 0.28s cubic-bezier(0.32, 0.72, 0.24, 1)'
     }}>
       <div style={{ display: 'flex', alignItems: 'center', gap: '15px' }}>
         {!isSidebarOpen && (
@@ -463,8 +537,8 @@ function App() {
         
         <div className="main-wrapper" style={{ 
           flex: 1, 
-          marginLeft: isSidebarOpen ? '200px' : '64px', 
-          transition: 'margin-left 0.2s cubic-bezier(0.4, 0, 0.2, 1)',
+          marginLeft: isSidebarOpen ? '220px' : '64px', 
+          transition: 'margin-left 0.28s cubic-bezier(0.32, 0.72, 0.24, 1)',
           display: 'flex',
           flexDirection: 'column',
           minHeight: '100vh',

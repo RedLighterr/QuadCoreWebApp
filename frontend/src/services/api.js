@@ -256,6 +256,26 @@ export const saveSearchHistory = async (items) => {
   }
 };
 
+// Yeni arama yapıldığında geçmişe ekler (duplikatları temizler, son 30'u tutar).
+// Hem localStorage hem backend'e yazar; Sidebar'a 'searchHistoryUpdated' eventi gönderir.
+export const appendSearchHistory = async (label) => {
+  const trimmed = (label || '').trim();
+  if (!trimmed) return [];
+  try {
+    const current = await getSearchHistory();
+    const list = Array.isArray(current) ? current : [];
+    const filtered = list.filter(item => (item.label || '').toLowerCase() !== trimmed.toLowerCase());
+    const newItem = { id: Date.now(), label: trimmed, pinned: false };
+    const updated = [newItem, ...filtered].slice(0, 30);
+    await saveSearchHistory(updated);
+    window.dispatchEvent(new CustomEvent('searchHistoryUpdated', { detail: updated }));
+    return updated;
+  } catch (e) {
+    console.error('[API] appendSearchHistory hatası:', e.message);
+    return [];
+  }
+};
+
 export const deleteSearchHistoryItem = async (itemId) => {
   if (USE_MOCK) {
     const saved = localStorage.getItem('searchHistory');

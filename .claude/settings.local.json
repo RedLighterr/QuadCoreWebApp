@@ -3,7 +3,14 @@
     "allow": [
       "Bash(python -c \"from app.api import admin_data; print\\('OK', [r.path for r in admin_data.router.routes]\\)\")",
       "Bash(python -c \"from app.main import app; print\\('routes:', sorted\\({r.path for r in app.routes}\\)\\)\")",
-      "Bash(python -c ' *)"
+      "Bash(python -c ' *)",
+      "Bash(node --check src/pages/Dashboard.jsx)",
+      "Bash(npx --yes esbuild src/pages/Dashboard.jsx --loader=jsx --bundle=false --log-level=error)",
+      "Bash(npx --yes esbuild src/pages/Dashboard.jsx src/App.jsx src/services/api.js --loader:.jsx=jsx --bundle=false --log-level=error --outdir=/tmp/checkbuild)",
+      "Bash(npx --yes esbuild src/pages/Dashboard.jsx --loader:.jsx=jsx --bundle=false --log-level=error --outdir=/tmp/cb)",
+      "Bash(npx --yes esbuild src/pages/About.jsx --loader:.jsx=jsx --bundle=false --log-level=error --outdir=/tmp/cb)",
+      "Bash(npx --yes esbuild src/App.jsx --loader:.jsx=jsx --bundle=false --log-level=error --outdir=/tmp/cb)",
+      "Bash(npx --yes esbuild src/pages/Dashboard.jsx src/App.jsx --loader:.jsx=jsx --bundle=false --log-level=error --outdir=/tmp/cb)"
     ]
   }
 }
